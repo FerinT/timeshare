@@ -6,37 +6,40 @@
 */
 include("database/DataManager.php");
 
-class ProcessSchedule{
-	
-	private $DataManagerObject;
-	
-	function __construct(){
-		$this->DataManagerObject = new DataManager;
-	}
-	
-	function saveSchedule($data){
-		$Schedule;
-		$isTaken = false;
-			
-		for($x = 0; $x < 84; $x++){
-			foreach($data as $d){
-				if((string) $x === $d){
-					$Schedule[$x] = 1;
-					$isTaken = true;
-				}
-			}
-			
-			if($isTaken == false){
-				$Schedule[$x] = 0;
-			}
-			$isTaken = false;
-			
-		}
-		$ScheduleString = implode($Schedule, ',');
-		$this->DataManagerObject->insertSchedule($ScheduleString);
-	
-	}
-	
+class ProcessSchedule
+{
+
+    private $DataManagerObject;
+
+    function __construct()
+    {
+        $this->DataManagerObject = new DataManager;
+    }
+
+    function saveSchedule($data)
+    {
+        $Schedule;
+        $isTaken = false;
+
+        for ($x = 0; $x < 84; $x++) {
+            foreach ($data as $d) {
+                if ((string)$x === $d) {
+                    $Schedule[$x] = 1;
+                    $isTaken = true;
+                }
+            }
+
+            if ($isTaken == false) {
+                $Schedule[$x] = 0;
+            }
+            $isTaken = false;
+
+        }
+        $ScheduleString = implode($Schedule, ',');
+        $this->DataManagerObject->insertSchedule($ScheduleString);
+
+    }
+
 }
 
 ?>
