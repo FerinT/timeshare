@@ -4,7 +4,7 @@
  * This is the business logic for processing the Schedule
  *
 */
-include "/../../dataaccess/DataManager.php";
+include "/../../dataaccess/ScheduleDAO.php";
 
 class ProcessSchedule
 {
@@ -13,7 +13,7 @@ class ProcessSchedule
 
     function __construct()
     {
-        $this->DataManagerObject = new DataManager;
+        $this->DataManagerObject = new ScheduleDAO;
     }
 
     function saveSchedule($data)

@@ -1,10 +1,10 @@
 <?php
 //include('CreateCalendar.php');
 //include 'C:\xampp\htdocs\timeshare\php\src\schedule\CreateCalendar.php';
-use Schedule\CreateCalendar;
+//use Schedule\CreateCalendar;
 
 
-class DataManager
+class ScheduleDAO
 {
 
     private $Connection;
