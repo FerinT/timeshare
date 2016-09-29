@@ -23,7 +23,6 @@ if (isset($_POST['submit'])) {
         $arr = array_fill(0, 84, 0);
         $Table = new CreateCalendar;
         $Table->createCalendar($arr);
-
         ?>
 
     </table>
