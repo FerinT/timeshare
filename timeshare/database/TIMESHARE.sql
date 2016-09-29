@@ -42,7 +42,7 @@ CREATE TABLE `Registration` (
 
 CREATE TABLE `Schedule` (
   `ScheduleID` int(10) UNSIGNED NOT NULL,
-  `ScheduleArray` varchar(84) NOT NULL
+  `ScheduleArray` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
