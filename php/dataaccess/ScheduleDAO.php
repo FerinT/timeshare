@@ -14,22 +14,22 @@ class ScheduleDAO
         $this->Connection = new mysqli("localhost", "root", "", "TIMESHARE");
     }
 
-    public function insertSchedule($arr)
+    public function insertSchedule($Arr)
     {
-        $sql = "INSERT INTO Schedule(ScheduleArray) VALUES('$arr')";
-        $this->Connection->query($sql);
+        $Sql = "INSERT INTO Schedule(ScheduleArray) VALUES('$Arr')";
+        $this->Connection->query($Sql);
     }
 
     // Select a specific schedule by using a the primary key
-    public function selectSchedule($pk)
+    public function selectSchedule($Pk)
     {
-        $sql = "SELECT * FROM Schedule WHERE ScheduleID = $pk";
-        $Result = $this->Connection->query($sql);
-        $row = $Result->fetch_assoc();
+        $Sql = "SELECT * FROM Schedule WHERE ScheduleID = $Pk";
+        $Result = $this->Connection->query($Sql);
+        $Row = $Result->fetch_assoc();
 
-        $data = explode(",", $row['ScheduleArray']);
+        $Data = explode(",", $Row['ScheduleArray']);
         $Table = new CreateCalendar;
-        $Table->createCalendar($data);
+        $Table->createCalendar($Data);
 
     }
 

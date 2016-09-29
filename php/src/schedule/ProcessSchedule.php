@@ -37,9 +37,7 @@ class ProcessSchedule
         }
         $ScheduleString = implode($Schedule, ',');
         $this->DataManagerObject->insertSchedule($ScheduleString);
-
     }
-
 }
 
 ?>

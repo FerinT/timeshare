@@ -37,6 +37,9 @@ class Service
      */
     private $SubCategories;
 
+    public function __construct(){
+
+    }
     /**
      * Service constructor.
      * @param $ServiceId
@@ -47,7 +50,7 @@ class Service
      * @param $Location
      * @param $SubCategories
      */
-    public function __construct($ServiceId, $ScheduleId, $userId, $Category, $RatePerHour, $Location, $SubCategories)
+    public function construct($ServiceId, $ScheduleId, $userId, $Category, $RatePerHour, $Location, $SubCategories)
     {
         $this->ServiceId = $ServiceId;
         $this->ScheduleId = $ScheduleId;
