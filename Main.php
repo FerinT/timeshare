@@ -3,8 +3,8 @@
  * This class acts as the main for now, This interacts with the datamanager via ProcessSchedule methods
  *
 */
-include("ProcessSchedule.php");
-
+include("php/src/schedule/ProcessSchedule.php");
+include("php/src/schedule/CreateCalendar.php");
 if (isset($_POST['submit'])) {
     $data = $_POST['my_schedule'];
     $ProcessScheduleObject = new ProcessSchedule;
