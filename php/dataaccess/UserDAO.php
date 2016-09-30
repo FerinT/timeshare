@@ -18,7 +18,7 @@ class UserDAO
 	
 		public function insertUser($UserObject)
 		{
-			
+			// this needs to change to the $UserObject->getProfilePicture();
 			$contents = addslashes(file_get_contents("php/dataaccess/a.jpg"));
 			
 			$email = $UserObject->getEmailAddress();
@@ -32,12 +32,22 @@ class UserDAO
 
 		} 
 		
-		public function readUser($pk)
+		// by pass UserObject as a parameter it avoids us having to include the User class which cause a cycilic dependancy
+		public function readUser($UserObject)
 		{
-			$Sql = "SELECT * FROM user WHERE userid = $pk";
+			$id = $UserObject->getUserId();
+		
+			$Sql = "SELECT * FROM user WHERE userid = $id";
 			$Result = $this->Connection->query($Sql);
 			$Row = $Result->fetch_assoc();
 			
-			echo '<img src="data:image/jpeg;base64,'.base64_encode( $Row['profilepicture'] ).'"/>';
+			$UserObject->setEmailAddress($Row['emailaddress']);
+			$UserObject->setName($Row['name']);
+			$UserObject->setPassword($Row['password']);
+			$UserObject->setProfilePicture($Row['profilepicture']);
+			$UserObject->setUserId($Row['userid']);
+			
+			return $UserObject;
+			//echo '<img src="data:image/jpeg;base64,'.base64_encode( $Row['profilepicture'] ).'"/>';
 		}
 }

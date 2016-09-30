@@ -8,14 +8,17 @@
       		include 'php/src/user/User.php';
 			include 'php/dataaccess/UserDAO.php';
 
-			$UserObject = new User("UserId", "EmailAddress", "Name", "Password", "a");
+			$UserObject = new User();
+			$UserObject->setUserId(1);
 			$UserDAO = new UserDAO;
 			
 		
 			//$UserDAO->insertUser($UserObject);
-			//$UserDAO->readUser(3);
 
 
+			$UserOject = $UserDAO->readUser($UserObject);
+			$image = $UserObject->getProfilePicture(); 
+			echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
         ?>
     </table>
     <p><input type='submit' name='submit' value='submit'/>

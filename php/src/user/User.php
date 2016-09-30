@@ -38,7 +38,10 @@ class User
      * @param $Password
      * @param $ProfilePicture
      */
-    public function __construct($UserId, $EmailAddress, $Name, $Password, $ProfilePicture)
+	public function __construct(){
+	}
+	
+    public function setAll($UserId, $EmailAddress, $Name, $Password, $ProfilePicture)
     {
         $this->UserId = $UserId;
         $this->EmailAddress = $EmailAddress;
