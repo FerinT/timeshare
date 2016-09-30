@@ -23,6 +23,14 @@ class Service
     /**
      * @var
      */
+    private $ServiceOffered;
+    /**
+     * @var
+     */
+    private $ServiceDescription;
+    /**
+     * @var
+     */
     private $Category;
     /**
      * @var
@@ -61,6 +69,39 @@ class Service
         $this->SubCategories = $SubCategories;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getServiceOffered()
+    {
+        return $this->ServiceOffered;
+    }
+
+    /**
+     * @param mixed $ServiceOffered
+     */
+    public function setServiceOffered($ServiceOffered)
+    {
+        $this->ServiceOffered = $ServiceOffered;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getServiceDescription()
+    {
+        return $this->ServiceDescription;
+    }
+
+    /**
+     * @param mixed $ServiceDescription
+     */
+    public function setServiceDescription($ServiceDescription)
+    {
+        $this->ServiceDescription = $ServiceDescription;
+    }
+
+    
     /**
      * @return mixed
      */

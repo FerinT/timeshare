@@ -58,6 +58,8 @@ CREATE TABLE `Service` (
   `ServiceID` int(11) NOT NULL,
   `ScheduleID` int(11) NOT NULL,
   `UserID` int(11) NOT NULL,
+  `ServiceOffered` varchar(60) NOT NULL,
+  `ServiceDescription` varchar(100) NOT NULL,
   `Category` varchar(60) NOT NULL,
   `RatePerHour` varchar(30) NOT NULL,
   `Location` varchar(100) NOT NULL,
@@ -199,6 +201,27 @@ INSERT INTO `Schedule` (`ScheduleID`, `ScheduleArray`) VALUES
   (10, '1,1,1,1,1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,1,1,0,0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,1,1,0,0,0,0,0,1'),
   (11, '0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,1,0,0,0,0,0,1,1,0,0,0,0,0,1,1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,0,1,0,1,0');
 
+
+INSERT INTO service (ServiceID, ScheduleID, UserID, ServiceOffered, ServiceDescription, Category, RatePerHour, Location, SubCategories)
+VALUES (1, 1, 1, 'Math Tutor', 'Grade12 math','Education', '150', 'Bellville', 'Maths');
+INSERT INTO service (ServiceID, ScheduleID, UserID, ServiceOffered, ServiceDescription, Category, RatePerHour, Location, SubCategories)
+VALUES (2, 2, 2, 'Math Tutor', 'Grade12 math','Education', '200', 'Bellville', 'Maths');
+INSERT INTO service (ServiceID, ScheduleID, UserID, ServiceOffered, ServiceDescription, Category, RatePerHour, Location, SubCategories)
+VALUES (3, 3, 3, 'English Tutor', 'Grade12 english','Education', '350', 'Blouberg', 'English');
+INSERT INTO service (ServiceID, ScheduleID, UserID, ServiceOffered, ServiceDescription, Category, RatePerHour, Location, SubCategories)
+VALUES (4, 4, 4, 'Musician', 'Play guitar at your party','Entertainment', '600', 'Bellville', 'Music');
+INSERT INTO service (ServiceID, ScheduleID, UserID, ServiceOffered, ServiceDescription, Category, RatePerHour, Location, SubCategories)
+VALUES (5, 5, 5, 'Physical science Tutor', 'Grade12 science','Education', '435', 'Plattekloof', 'Physical Science');
+INSERT INTO service (ServiceID, ScheduleID, UserID, ServiceOffered, ServiceDescription, Category, RatePerHour, Location, SubCategories)
+VALUES (6, 6, 6, 'Art Tutor', 'Grade12 art','Education', '100', 'Bellville', 'Art');
+INSERT INTO service (ServiceID, ScheduleID, UserID, ServiceOffered, ServiceDescription, Category, RatePerHour, Location, SubCategories)
+VALUES (7, 7, 7, 'Drama Tutor', 'Grade12 drama','Education', '250', 'Soneike', 'Drama');
+INSERT INTO service (ServiceID, ScheduleID, UserID, ServiceOffered, ServiceDescription, Category, RatePerHour, Location, SubCategories)
+VALUES (8, 8, 8, 'Afrikaans Tutor', 'Grade12 afrikaans','Education', '350', 'Paarl', 'Afrikaans');
+INSERT INTO service (ServiceID, ScheduleID, UserID, ServiceOffered, ServiceDescription, Category, RatePerHour, Location, SubCategories)
+VALUES (9, 9, 9, 'Math Tutor', 'Grade12 math','Education', '200', 'Bellville', 'Maths');
+INSERT INTO service (ServiceID, ScheduleID, UserID, ServiceOffered, ServiceDescription, Category, RatePerHour, Location, SubCategories)
+VALUES (10, 10, 10, 'Math Tutor', 'Grade12 math','Education', '300', 'Bellville', 'Maths');
 
 
 INSERT INTO `user` (`userid`, `emailaddress`, `name`, `password`, `profilepicture`) VALUES

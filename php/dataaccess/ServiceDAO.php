@@ -6,7 +6,7 @@
  * Date: 9/29/2016
  * Time: 12:04 PM
  */
-include dirname(__FILE__) . "/../src/service/Service.php";
+include_once dirname(__FILE__) . "/../src/service/Service.php";
 
 class ServiceDAO
 {
@@ -26,10 +26,11 @@ class ServiceDAO
         $RatePerHour = $Service->getRatePerHour();
         $Location = $Service->getLocation();
         $SubCategories = $Service->getSubCategories();
+        $ServiceDescription = $Service->getServiceDescription();
+        $ServiceOffered = $Service->getServiceOffered();
 
-
-        $Sql = "INSERT INTO service ( ScheduleID, UserID, Category, RatePerHour, Location, SubCategories)
-        VALUES ( ${ScheduleId}, ${UserId}, '${Category}', '${RatePerHour}', '${Location}', '${SubCategories}')";
+        $Sql = "INSERT INTO service ( ScheduleID, UserID,ServiceOffered, ServiceDescription ,Category, RatePerHour, Location, SubCategories)
+        VALUES ( ${ScheduleId}, ${UserId},${ServiceOffered},${ServiceDescription}, '${Category}', '${RatePerHour}', '${Location}', '${SubCategories}')";
 
         $this->Connection->query($Sql);
     }
@@ -47,6 +48,8 @@ class ServiceDAO
             $ServiceArray = array();
             while ($Row = $Result->fetch_assoc()) {
                 $ServiceFound = new Service();
+                $ServiceFound->setServiceDescription($Row['ServiceDescription']);
+                $ServiceFound->setServiceOffered($Row['ServiceOffered']);
                 $ServiceFound->setServiceId($Row['ServiceID']);
                 $ServiceFound->setCategory($Row['Category']);
                 $ServiceFound->setLocation($Row['Location']);
@@ -83,6 +86,8 @@ class ServiceDAO
             $ServiceArray = array();
             while ($Row = $Result->fetch_assoc()) {
                 $ServiceFound = new Service();
+                $ServiceFound->setServiceDescription($Row['ServiceDescription']);
+                $ServiceFound->setServiceOffered($Row['ServiceOffered']);
                 $ServiceFound->setServiceId($Row['ServiceID']);
                 $ServiceFound->setCategory($Row['Category']);
                 $ServiceFound->setLocation($Row['Location']);
@@ -108,14 +113,17 @@ class ServiceDAO
 
         $Sql = "SELECT * FROM Service WHERE UserID = $UserId;";
         $Result = $this->Connection->query($Sql);
-
+        $ServiceArray = array();
         //$Row = $Result->fetch_assoc();
         if (!$Result) {
             //die('Could not get data: ' . mysql_error());
+            
         } else {
-            $ServiceArray = array();
+            
             while ($Row = $Result->fetch_assoc()) {
                 $ServiceFound = new Service();
+                $ServiceFound->setServiceDescription($Row['ServiceDescription']);
+                $ServiceFound->setServiceOffered($Row['ServiceOffered']);
                 $ServiceFound->setServiceId($Row['ServiceID']);
                 $ServiceFound->setCategory($Row['Category']);
                 $ServiceFound->setLocation($Row['Location']);
@@ -132,7 +140,9 @@ class ServiceDAO
                 print_r($value);
                 echo "<br/><br/>";
             }
+            
         }
+        return $ServiceArray;
 
     }
 
@@ -149,6 +159,8 @@ class ServiceDAO
             $ServiceArray = array();
             while ($Row = $Result->fetch_assoc()) {
                 $ServiceFound = new Service();
+                $ServiceFound->setServiceDescription($Row['ServiceDescription']);
+                $ServiceFound->setServiceOffered($Row['ServiceOffered']);
                 $ServiceFound->setServiceId($Row['ServiceID']);
                 $ServiceFound->setCategory($Row['Category']);
                 $ServiceFound->setLocation($Row['Location']);
