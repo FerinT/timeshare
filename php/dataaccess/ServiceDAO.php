@@ -6,6 +6,8 @@
  * Date: 9/29/2016
  * Time: 12:04 PM
  */
+include dirname(__FILE__) . "/../src/service/Service.php";
+
 class ServiceDAO
 {
     private $Connection;
@@ -33,30 +35,139 @@ class ServiceDAO
     }
 
     // Select a specific schedule by using a the primary key
-    public function selectService($Pk)
+    public function selectServiceById($Pk)
     {
-        $Sql = "SELECT * FROM Schedule WHERE ScheduleID = $Pk";
+        $Sql = "SELECT * FROM Service WHERE ServiceID = $Pk;";
         $Result = $this->Connection->query($Sql);
-        $Row = $Result->fetch_assoc();
-        $Data = explode(",", $Row['ScheduleArray']);
-        $Table = new CreateCalendar;
-        $Table->createCalendar($Data);
+
+        //$Row = $Result->fetch_assoc();
+        if (!$Result) {
+            //die('Could not get data: ' . mysql_error());
+        } else {
+            $ServiceArray = array();
+            while ($Row = $Result->fetch_assoc()) {
+                $ServiceFound = new Service();
+                $ServiceFound->setServiceId($Row['ServiceID']);
+                $ServiceFound->setCategory($Row['Category']);
+                $ServiceFound->setLocation($Row['Location']);
+                $ServiceFound->setRatePerHour($Row['RatePerHour']);
+                $ServiceFound->setSubCategories($Row['SubCategories']);
+                $ServiceFound->setScheduleId($Row['ScheduleID']);
+                $ServiceFound->setUserId($Row['UserID']);
+
+                array_push($ServiceArray, $ServiceFound);
+
+
+            }
+            foreach ($ServiceArray as $value) {
+                print_r($value);
+                echo "<br/><br/>";
+            }
+        }
+
 
     }
 
-    public function selectAllServices()
+
+    public
+    function selectAllServices()
     {
 
+        $Sql = "SELECT * FROM Service;";
+        $Result = $this->Connection->query($Sql);
+
+        //$Row = $Result->fetch_assoc();
+        if (!$Result) {
+            //die('Could not get data: ' . mysql_error());
+        } else {
+            $ServiceArray = array();
+            while ($Row = $Result->fetch_assoc()) {
+                $ServiceFound = new Service();
+                $ServiceFound->setServiceId($Row['ServiceID']);
+                $ServiceFound->setCategory($Row['Category']);
+                $ServiceFound->setLocation($Row['Location']);
+                $ServiceFound->setRatePerHour($Row['RatePerHour']);
+                $ServiceFound->setSubCategories($Row['SubCategories']);
+                $ServiceFound->setScheduleId($Row['ScheduleID']);
+                $ServiceFound->setUserId($Row['UserID']);
+
+                array_push($ServiceArray, $ServiceFound);
+
+
+            }
+            foreach ($ServiceArray as $value) {
+                print_r($value);
+                echo "<br/><br/>";
+            }
+        }
     }
 
-    public function selectAllServicesForUser($UserId)
+    public
+    function selectAllServicesForUser($UserId)
     {
 
+        $Sql = "SELECT * FROM Service WHERE UserID = $UserId;";
+        $Result = $this->Connection->query($Sql);
+
+        //$Row = $Result->fetch_assoc();
+        if (!$Result) {
+            //die('Could not get data: ' . mysql_error());
+        } else {
+            $ServiceArray = array();
+            while ($Row = $Result->fetch_assoc()) {
+                $ServiceFound = new Service();
+                $ServiceFound->setServiceId($Row['ServiceID']);
+                $ServiceFound->setCategory($Row['Category']);
+                $ServiceFound->setLocation($Row['Location']);
+                $ServiceFound->setRatePerHour($Row['RatePerHour']);
+                $ServiceFound->setSubCategories($Row['SubCategories']);
+                $ServiceFound->setScheduleId($Row['ScheduleID']);
+                $ServiceFound->setUserId($Row['UserID']);
+
+                array_push($ServiceArray, $ServiceFound);
+
+
+            }
+            foreach ($ServiceArray as $value) {
+                print_r($value);
+                echo "<br/><br/>";
+            }
+        }
+
     }
 
-    public function selectServicesByCategory($Category)
+    public
+    function selectServicesByCategory($Category)
     {
+        $Sql = "SELECT * FROM Service WHERE Category LIKE '%$Category%';";
+        $Result = $this->Connection->query($Sql);
+
+        //$Row = $Result->fetch_assoc();
+        if (!$Result) {
+            //die('Could not get data: ' . mysql_error());
+        } else {
+            $ServiceArray = array();
+            while ($Row = $Result->fetch_assoc()) {
+                $ServiceFound = new Service();
+                $ServiceFound->setServiceId($Row['ServiceID']);
+                $ServiceFound->setCategory($Row['Category']);
+                $ServiceFound->setLocation($Row['Location']);
+                $ServiceFound->setRatePerHour($Row['RatePerHour']);
+                $ServiceFound->setSubCategories($Row['SubCategories']);
+                $ServiceFound->setScheduleId($Row['ScheduleID']);
+                $ServiceFound->setUserId($Row['UserID']);
+
+                array_push($ServiceArray, $ServiceFound);
+
+
+            }
+            foreach ($ServiceArray as $value) {
+                print_r($value);
+                echo "<br/><br/>";
+            }
+        }
 
     }
-
 }
+
+
