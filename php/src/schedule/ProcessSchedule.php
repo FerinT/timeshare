@@ -4,7 +4,7 @@
  * This is the business logic for processing the Schedule
  *
 */
-include "/../../dataaccess/ScheduleDAO.php";
+include dirname(__FILE__) ."/../../dataaccess/ScheduleDAO.php";
 
 class ProcessSchedule
 {
