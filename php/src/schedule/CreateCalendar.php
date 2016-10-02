@@ -16,9 +16,10 @@ class CreateCalendar
     {
     }
 
-    public function createCalendar($arr)
+   public function createCalendar($arr)
     {
-        echo "<td>";
+		
+        echo "<table><td>";
         echo "</td>";
         foreach ($this->Days as $Day) {
             echo "<th colspan='3'>" . $Day . "</th>";
@@ -45,6 +46,7 @@ class CreateCalendar
             echo "</tr>";
 
         }
+		echo"</table>";
     }
 
 

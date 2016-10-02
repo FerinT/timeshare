@@ -100,11 +100,12 @@ class ServiceDAO
 
 
             }
-            foreach ($ServiceArray as $value) {
+          /*  foreach ($ServiceArray as $value) {
                 print_r($value);
                 echo "<br/><br/>";
-            }
+            } */
         }
+		return $ServiceArray;
     }
 
     public
