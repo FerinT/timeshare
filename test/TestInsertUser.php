@@ -5,8 +5,8 @@
 <form name="myForm" action="Main.php" method="POST">
     <table>
         <?php
-      		include 'php/src/user/User.php';
-			include 'php/dataaccess/UserDAO.php';
+      		include_once dirname(__FILE__) . '/../php/src/user/User.php';
+			include_once dirname(__FILE__) . '/../php/dataaccess/UserDAO.php';
 
 			$UserObject = new User();
 			$UserObject->setUserId(1);

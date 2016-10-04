@@ -2,7 +2,7 @@
 
 session_start();
 include_once dirname(__FILE__) . "/../../dataaccess/ServiceDAO.php";
-include_once dirname(__FILE__) . "/../../dataaccess/ServiceDAO1.php";
+
 
 include_once "Service.php";
 
@@ -13,7 +13,7 @@ class ServiceTableGenerator
     {
         $ServiceDAO = new ServiceDAO();
         $ServicesForUser = $ServiceDAO->selectAllServicesForUser($UserID);
-        $this->generateTable($ServicesForUser);
+        $this->generateTable1($ServicesForUser);
     }
 
     function generateTable($ServiceArray)

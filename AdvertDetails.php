@@ -1,6 +1,6 @@
 <?php
-include_once dirname(__FILE__) . "/php/dataaccess/ServiceDAO1.php";
-include_once dirname(__FILE__) . "/php/src/service/Service1.php";
+include_once dirname(__FILE__) . "/php/dataaccess/ServiceDAO.php";
+include_once dirname(__FILE__) . "/php/src/service/Service.php";
 include_once dirname(__FILE__) . "/php/src/schedule/Schedule.php";
 include_once dirname(__FILE__) . "/php/src/schedule/CreateCalendar.php";
 
