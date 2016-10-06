@@ -17,6 +17,8 @@ $Table = new CreateCalendar();
 $Table->createCalendar($ScheduleArray);
 
 
-echo "</br><b>Rate Per Hour: R</b>". $ServiceArray[$Index]->getRatePerHour();
+echo "</br><div class='alert alert-warning text-align-center spaces-bottom'><h3>Rate Per Hour: R". $ServiceArray[$Index]->getRatePerHour() . "</h3></div><br/><br/><br/><br/><div class='alert alert-info footer'>
+				<p>This website is protected by law and is copyrighted to the owners and all those that are involved</p>
+				</div></body></html>";
 
 ?>

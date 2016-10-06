@@ -5,11 +5,13 @@
  *
 */
 
+include dirname(__FILE__) . '/../../../pages/header.php';
+
 class CreateCalendar
 {
 
     private $Time = 8;
-    private $Days = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+    private $Days = array("Monday", "Tuesday  ", "Wednesday", "Thursday ", "Friday   ", "Saturday ", "Sunday   ");
     private $cnt = 0;
 
     function __construct()
@@ -19,25 +21,29 @@ class CreateCalendar
    public function createCalendar($arr)
     {
 		
-        echo "<table><td>";
+		echo '<div class="container spaces-top"><div class="table-responsive">';
+		
+        echo "<table class='table table-bordered'><td class='table-border-color'>";
         echo "</td>";
         foreach ($this->Days as $Day) {
-            echo "<th colspan='3'>" . $Day . "</th>";
+            echo "<th class='custom-row-header' colspan='3'>" . $Day . "</th>";
         }
 
         for ($y = 0; $y < 12; $y++) {
             echo "<tr>";
 
-            echo "<td>" . $this->Time . "h00" . " - " . $this->Time . "h00";
+            echo "<td class='text-align-center'><b>" . $this->Time . "h00" . " - " . $this->Time . "h00</b>";
             $this->Time++;
+			$color_negative="#d9534f";
+			$color_positive="#5cb85c";
             foreach ($this->Days as $Day) {
                 if ((string)$arr[$this->cnt] == '0') {
-                    echo "<td colspan='3'style='text-align:center;'>
-					<input type='checkbox' name='my_schedule[]' value= '$this->cnt' style='outline:10px'/> 
+                    echo "<td colspan='3'class='img-rounded text-align-center btn btn-success inline-table-cell'>
+					<!--<input type='checkbox' name='my_schedule[]' value= '$this->cnt' style='outline:10px'/>-->
 				</td>";
                 } else {
-                    echo "<td colspan='3'style='text-align:center;'>
-					<input type='checkbox' name='my_schedule[]' value= '$this->cnt' style='outline:10px' checked/> 
+                    echo "<td colspan='3' class='img-rounded text-align-center btn btn-danger inline-table-cell'>
+					<!--<input type='checkbox' name='my_schedule[]' value= '$this->cnt' style='outline:10px' checked/>-->
 				</td>";
                 }
                 $this->cnt++;
@@ -46,7 +52,8 @@ class CreateCalendar
             echo "</tr>";
 
         }
-		echo"</table>";
+		echo"</table></div></div>";
+	
     }
 
 

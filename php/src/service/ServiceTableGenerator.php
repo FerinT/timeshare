@@ -2,10 +2,10 @@
 
 session_start();
 include_once dirname(__FILE__) . "/../../dataaccess/ServiceDAO.php";
-
+include_once dirname(__FILE__) . "/../../dataaccess/ServiceDAO1.php";
 
 include_once "Service.php";
-
+include dirname(__FILE__) .'/../../../pages/header.php';
 
 class ServiceTableGenerator
 {
@@ -13,17 +13,18 @@ class ServiceTableGenerator
     {
         $ServiceDAO = new ServiceDAO();
         $ServicesForUser = $ServiceDAO->selectAllServicesForUser($UserID);
-        $this->generateTable1($ServicesForUser);
+        $this->generateTable($ServicesForUser);
     }
 
     function generateTable($ServiceArray)
     {
-        echo "<table style = \"width:80%\" >
-              <tr >
-                <th > Firstname</th >
-                <th > Lastname</th > 
-                <th > Age</th >
+		echo '<table style = \"width:80%\" >
+				<tr >
+					<th > Firstname</th >
+					<th > Lastname</th > 
+					<th > Age</th >
               </tr >";
+			 ';
 
         foreach ($ServiceArray as $Service) {
             $ServiceId = $Service->getServiceId();
@@ -38,10 +39,10 @@ class ServiceTableGenerator
 
             echo "
               <tr >
-                <td > UserImage</td >
+                <td> UserImage</td >
                 <td > 
-                        <p>${ServiceOffered}</p>        
-                        <p>${ServiceDescription}</p>          
+                        <p class='row-text-center'><b>${ServiceOffered}</b></p>        
+                        <p class='row-text-center'><b>${ServiceDescription}</b></p>          
                 </td > 
                 <td > 50</td >
               </tr >";
@@ -55,13 +56,16 @@ class ServiceTableGenerator
 	// Ferin's mess 
 	function generateTable1($ServiceArray)
     {
-        echo "<table style = \"width:80%\" >
-              <tr >
-                <th >Profile Picture</th >
-                <th >Description</th > 
-                <th >Price Per Hour</th >
-				<th >View Schedule</th >
-              </tr >";
+        echo '<div class="container spaces-top">
+				<div class="table-responsive"> 
+					<table class="table table-bordered table-header-color">
+					  <tr>
+						<th class="custom-row-header row-font-size">Profile Picture</th >
+						<th class="custom-row-header row-font-size">Description</th > 
+						<th class="custom-row-header row-font-size">Price Per Hour</th >
+						<th class="custom-row-header row-font-size">Schedule</th >
+					  </tr >
+			';
 
 	    $ArrayIndex = 0;
 		
@@ -77,20 +81,24 @@ class ServiceTableGenerator
             $ServiceDescription = $Service1->getServiceDescription();
             $ServiceOffered = $Service1->getServiceOffered();
             echo "
-              <tr >
-                <td align='center'>";
-				echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'" style="width:128px;height:128px;"/>';
+              <tr class='active'>
+                <td class='row-text-center' align='center'>";
+				echo '<img class="img-rounded" src="data:image/jpeg;base64,'.base64_encode( $image ).'" style="width:236px;height:128px;"/>';
 				echo"</td >
-                <td align='center'> 
-                        <p>${ServiceOffered}</p>        
-                        <p>${ServiceDescription}</p>          
+                <td class='row-text-center' align='center'> 
+                        <h3 class='row-text-center'><b>${ServiceOffered}</b></h3>        
+                        <p class='row-text-center'><b>${ServiceDescription}</b></p>          
                 </td > 
-                <td align='center'> <p>${RatePerHour}</p></td >
-				<td align='center'> <p><a href='AdvertDetails.php?index=${ArrayIndex}'>click</a></p></td>
+                <td class='row-text-center' align='center'> <h3 class='row-text-center'><b>R${RatePerHour}</b></h3></td >
+				<td class='row-text-center' align='center'> <p class='row-text-center'><a class='btn btn-info custom-button' role='button' type=''button href='AdvertDetails.php?index=${ArrayIndex}'><b>View Schedule</b></a></p></td>
               </tr >";
 			$ArrayIndex += 1;
         }
-           echo "</table >";
+           echo "</table ></div></div>
+				<div class='alert alert-info footer'>
+					<p>This website is protected by law and is copyrighted to the owners and all those that are involved</p>
+				</div></body>
+			</html>";
 
 		$_SESSION['ServiceArray'] = $ServiceArray;
     }
