@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 	
-	<nav class="navbar navbar-inverse navbar-static-top remove-margin-bottom">
+	<nav class="navbar navbar-dark bg-primary navbar-static-top remove-margin-bottom">
       <div>
         <div class="navbar-header altered-menu">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
