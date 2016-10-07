@@ -3,7 +3,7 @@
 <head><title>Timeshare</title></head>
 <body class="font-color">
 	
-	<?php include '/pages/header.php' ?>
+	<?php include dirname(__FILE__).'/pages/header.php' ?>
 	
 	<div class="image">
 		<div class="row rows-position">
