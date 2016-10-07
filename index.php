@@ -99,7 +99,7 @@
 	  </div>
 	</div>
 	
-	<?php include '/pages/footer.php' ?>
+	<?php include dirname(__FILE__).'/pages/footer.php' ?>
 	
 </body>
 </html>
