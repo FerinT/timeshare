@@ -32,18 +32,18 @@ class CreateCalendar
         for ($y = 0; $y < 12; $y++) {
             echo "<tr>";
 
-            echo "<td class='text-align-center'><b>" . $this->Time . "h00" . " - " . $this->Time . "h00</b>";
+            echo "<td class='text-align-center'><b>" . $this->Time . "h00" . " - " . ($this->Time+1) . "h00</b>";
             $this->Time++;
 			$color_negative="#d9534f";
 			$color_positive="#5cb85c";
             foreach ($this->Days as $Day) {
-                if ((string)$arr[$this->cnt] == '0') {
-                    echo "<td colspan='3'class='img-rounded text-align-center btn btn-success inline-table-cell'>
-					<!--<input type='checkbox' name='my_schedule[]' value= '$this->cnt' style='outline:10px'/>-->
-				</td>";
+                if ((string)$arr[$this->cnt] == '0') {              
+					echo "<td colspan='3'><input type='checkbox' name='my_schedule[]' value= '$this->cnt' style='outline:10px;'";
+					if(basename($_SERVER['PHP_SELF']) != 'CreateAdvert.php')
+						echo" onclick='return false'; disabled='disabled';";
+				echo"/></td>";
                 } else {
-                    echo "<td colspan='3' class='img-rounded text-align-center btn btn-danger inline-table-cell'>
-					<!--<input type='checkbox' name='my_schedule[]' value= '$this->cnt' style='outline:10px' checked/>-->
+					echo"<td colspan='3'><input type='checkbox' name='my_schedule[]' value= '$this->cnt' style='outline:10px' checked/>
 				</td>";
                 }
                 $this->cnt++;
