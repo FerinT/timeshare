@@ -13,12 +13,12 @@ The CreateAdvert.php needs to CSS.
 The idea:
 So far we have figured out how to compare two schedules to see what the user is wanting to purchase, the next step is to create an algorithm to work out the Day and time in order to fill out \timeshare\php\src\cart\Item.php and \timeshare\php\src\cart\Cart.php respectively (DTO) to be passed with sessions.
 
-What still needs to be done:
-*verification emails to be sent when registering
-*authenticating that a user is verified before allowing them to log in
-*ensuring that a user is logged in before the "add to cart"
-*when adding an advert we need to get the current users information in order to save it in the database
-*create funtionality in \timeshare\php\src\schedule\ProcessSchedule.php to add, and remove items from the cart (Session variable)
-*update the adverts associated schedule when a user chooses to buy "time"
+What still needs to be done..
+1. verification emails to be sent when registering
+2. authenticating that a user is verified before allowing them to log in
+3. ensuring that a user is logged in before the "add to cart"
+4. when adding an advert we need to get the current users information in order to save it in the database
+5. create funtionality in \timeshare\php\src\schedule\ProcessSchedule.php to add, and remove items from the cart (Session variable)
+6. update the adverts associated schedule when a user chooses to buy "time"
 
 PLENTY MORE
