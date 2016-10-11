@@ -3,11 +3,22 @@
 How to run this bad boy for the first deliverable..
 
 1. import the script to populate the database in phpmyadmin \timeshare\php\dataaccess\scripts\timeshare.sql
-2. run the page /timeshare
+2. run the page /timeshare ( This takes you to the homepage)
+3. run \timeshare\DisplayAdverts.php in order to view advert
 
 More Info:
+The register page still needs to be linked to the homepage, all the functionality is there.
+The CreateAdvert.php needs to CSS.
 
-DisplayAdverts.php calls the page AdvertDetails.php when you click on the link.
-You will notice that there are some duplicate classes with a '1' at the end, this is due to refactoring. 
-The only difference between service1.php (The one currently in use) and service.php is that we added value objects in Service.php 
-ServiceDAO.php (The one currently in use) was my attempt at using a join to construct a Service1.php object (with the schedule and user value objects) this only contains a select all for now.
+The idea:
+So far we have figured out how to compare two schedules to see what the user is wanting to purchase, the next step is to create an algorithm to work out the Day and time in order to fill out \timeshare\php\src\cart\Item.php and \timeshare\php\src\cart\Cart.php respectively (DTO) to be passed with sessions.
+
+What still needs to be done:
+*verification emails to be sent when registering
+*authenticating that a user is verified before allowing them to log in
+*ensuring that a user is logged in before the "add to cart"
+*when adding an advert we need to get the current users information in order to save it in the database
+*create funtionality in \timeshare\php\src\schedule\ProcessSchedule.php to add, and remove items from the cart (Session variable)
+*update the adverts associated schedule when a user chooses to buy "time"
+
+PLENTY MORE
