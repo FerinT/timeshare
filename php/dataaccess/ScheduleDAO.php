@@ -16,7 +16,8 @@ class ScheduleDAO
 
     public function insertSchedule($Arr)
     {
-        $Sql = "INSERT INTO Schedule(ScheduleArray) VALUES('$Arr')";
+		$ScheduleString = implode($Arr, ',');
+        $Sql = "INSERT INTO Schedule(ScheduleArray) VALUES('$ScheduleString')";
         $this->Connection->query($Sql);
     }
 
