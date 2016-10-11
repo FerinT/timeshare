@@ -4,21 +4,59 @@ include_once dirname(__FILE__) . "/php/src/service/Service.php";
 include_once dirname(__FILE__) . "/php/src/schedule/Schedule.php";
 include_once dirname(__FILE__) . "/php/src/schedule/CreateCalendar.php";
 
-$Index = $_GET['index'];
-session_start();
-$ServiceArray = $_SESSION['ServiceArray'];
+if(isset($_POST['submit']))
+{
+	include_once dirname(__FILE__) . "/php/src/schedule/ProcessSchedule.php";
+	$ProcessScheduleObject = new ProcessSchedule();
+	
+	
+	// This the array of what the user checked to buy 
+	$tmp = $_POST['my_schedule'];
+	$BuyingSchedule = $ProcessScheduleObject->processSchedule($tmp);
+	
+	// The original schedule posted by the user
+	$ScheduleArray = $_POST['originalSchedule'];
+	$SellingSchedule = explode(',',$ScheduleArray);
+	
+	// returns the indexes "timeslots" selected by the user
+	$arr = $ProcessScheduleObject->compareSchedule($BuyingSchedule, $SellingSchedule); 
+	
+	exit();
+}
 
-
-
-// Display Calendar
-$Schedule = $ServiceArray[$Index]->getSchedule();
-$ScheduleArray = explode(',',$Schedule->getScheduleArray());
-$Table = new CreateCalendar();
-$Table->createCalendar($ScheduleArray);
-
-
-echo "</br><div class='alert alert-warning text-align-center spaces-bottom'><h3>Rate Per Hour: R". $ServiceArray[$Index]->getRatePerHour() . "</h3></div><br/><br/><br/><br/><div class='alert alert-info footer'>
-				<p>This website is protected by law and is copyrighted to the owners and all those that are involved</p>
-				</div></body></html>";
 
 ?>
+
+<html>
+	<body>
+	<br>
+		<form name="advertDeatilsForm" action="AdvertDetails.php" method="POST">
+		<?php
+			$Index = $_GET['index'];
+			session_start();
+			$ServiceArray = $_SESSION['ServiceArray'];
+
+			// Display Calendar
+			$Schedule = $ServiceArray[$Index]->getSchedule();
+			$ScheduleArray = explode(',',$Schedule->getScheduleArray());
+			$Table = new CreateCalendar();
+			$Table->createCalendar($ScheduleArray); 
+			
+			// This deals with passing the original array on form submit
+			$Data = implode(',', $ScheduleArray);
+			echo'<input type="hidden" name="originalSchedule" value="'.$Data.'" >';
+			
+		?>
+			<input type='submit' name='submit' value='Purchase' />
+		</form>
+	<div class='alert alert-warning text-align-center spaces-bottom'>
+		<h3>Rate Per Hour: R<?php echo $ServiceArray[$Index]->getRatePerHour() ?></h3>
+	</div>
+	<br/><br/><br/><br/>
+	<div class='alert alert-info footer'>
+				<p>This website is protected by law and is copyrighted to the owners and all those that are involved</p>
+	</div>
+	</body>
+</html>
+
+

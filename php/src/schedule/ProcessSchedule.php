@@ -32,6 +32,21 @@ class ProcessSchedule
         }
    		return $Schedule;
     }
+	
+	// Processes (compares) the original schedule with the one the user wants to buy, returns the chosen indexes 
+	function compareSchedule($SellingArr, $BuyingArr)
+	{		
+		$result = array();
+		
+		for($x = 0; $x < 84; $x++)
+		{
+			if($SellingArr[$x] != $BuyingArr[$x])
+				array_push($result, $x);
+		}
+		
+		return $result;
+	}
+	
 }
 
 ?>
