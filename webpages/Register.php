@@ -33,25 +33,8 @@ if(isset($_POST['submit']))
 					
 	$UserDAO->insertUser($UserObject); 
 	
-	
+	header( 'Location: ../DisplayAdverts.php' ) ;
 }
 
 
 ?>
-
-
-<html>
-	<head><script type="text/javascript" src="../javascript/Formvalidation.js"> </script></head>
-<body>
-
-<form name="registerForm" action="Register.php" method="POST" enctype="multipart/form-data"  onsubmit="return isValidRegisterForm();">
-    <p>Name: <input type='text' name='details[0]' value="<?php if(isset($_POST['submit'])){ $details = $_POST['details']; echo $details[0]; }?>"/> </p>
-	<p>Email Address: <input type='text' name='details[1]' value="<?php if(isset($_POST['submit'])){ $details = $_POST['details']; echo $details[1]; }?>"/> </p>
-	<p>Profile picture: <input type='file' name='image' accept="image/jpeg" value="" /> </p>
-	<p>Password: <input type='password' name='details[2]' value=""/> </p>
-	<p>Confirm Password: <input type='password' name='details[3]' value=""/> </p>
-    <p><input type='submit' name='submit' value='submit'/>
-</form>
-
-</body>
-<html>
