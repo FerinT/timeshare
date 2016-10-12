@@ -1,4 +1,6 @@
 <?php
+
+
 include_once dirname(__FILE__) . "/php/dataaccess/ServiceDAO.php";
 include_once dirname(__FILE__) . "/php/src/service/Service.php";
 include_once dirname(__FILE__) . "/php/src/schedule/Schedule.php";
@@ -6,6 +8,7 @@ include_once dirname(__FILE__) . "/php/src/schedule/CreateCalendar.php";
 
 if(isset($_POST['submit']))
 {
+	
 	include_once dirname(__FILE__) . "/php/src/schedule/ProcessSchedule.php";
 	$ProcessScheduleObject = new ProcessSchedule();
 	
@@ -18,9 +21,14 @@ if(isset($_POST['submit']))
 	$ScheduleArray = $_POST['originalSchedule'];
 	$SellingSchedule = explode(',',$ScheduleArray);
 	
-	// returns the indexes "timeslots" selected by the user
+	// returns the indexes of "timeslots" selected by the user
 	$arr = $ProcessScheduleObject->compareSchedule($BuyingSchedule, $SellingSchedule); 
 	
+	session_start();
+	$_SESSION['indexes'] = $arr;
+
+	include("ProcessIndexes.php");
+
 	exit();
 }
 
@@ -35,6 +43,7 @@ if(isset($_POST['submit']))
 			$Index = $_GET['index'];
 			session_start();
 			$ServiceArray = $_SESSION['ServiceArray'];
+			$_SESSION['advertObject'] = $ServiceArray[$Index];
 
 			// Display Calendar
 			$Schedule = $ServiceArray[$Index]->getSchedule();
@@ -43,6 +52,7 @@ if(isset($_POST['submit']))
 			$Table->createCalendar($ScheduleArray); 
 			
 			// This deals with passing the original array on form submit
+			// impode it back into a sting so that we can pass it via $_POST
 			$Data = implode(',', $ScheduleArray);
 			echo'<input type="hidden" name="originalSchedule" value="'.$Data.'" >';
 			
