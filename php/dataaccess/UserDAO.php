@@ -6,8 +6,6 @@
  * 
  */
 
-//include 'php/src/user/User.php';
-
 class UserDAO
 {
 		private $Connection;
@@ -48,6 +46,17 @@ class UserDAO
 			$UserObject->setUserId($Row['userid']);
 			
 			return $UserObject;
-			//echo '<img src="data:image/jpeg;base64,'.base64_encode( $Row['profilepicture'] ).'"/>';
+		}
+	
+		public function isValidUser($email, $password)
+		{
+			$Sql = "SELECT * FROM user WHERE emailaddress = $email AND password = $password";
+			$Result = $this->Connection->query($Sql);
+			$Row = $Result->fetch_assoc();
+			
+			if(count($Row) <= 0)
+				return false;
+			
+			return true;
 		}
 }
