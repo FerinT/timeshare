@@ -41,6 +41,11 @@ class Item
 	{
 		return $this->Time;
 	}
+	
+	public function getAdvert()
+	{
+		return $this->Advert;
+	}
 
 }
 

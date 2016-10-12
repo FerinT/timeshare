@@ -14,45 +14,7 @@ class ServiceTableGenerator
         $ServicesForUser = $ServiceDAO->selectAllServicesForUser($UserID);
         $this->generateTable($ServicesForUser);
     }
-
-    function generateTable($ServiceArray)
-    {
-		echo '<table style = \"width:80%\" >
-				<tr >
-					<th > Firstname</th >
-					<th > Lastname</th > 
-					<th > Age</th >
-              </tr >";
-			 ';
-
-        foreach ($ServiceArray as $Service) {
-            $ServiceId = $Service->getServiceId();
-            $ScheduleId = $Service->getScheduleID();
-            $UserId = $Service->getUserId();
-            $Category = $Service->getCategory();
-            $RatePerHour = $Service->getRatePerHour();
-            $Location = $Service->getLocation();
-            $SubCategories = $Service->getSubCategories();
-            $ServiceDescription = $Service->getServiceDescription();
-            $ServiceOffered = $Service->getServiceOffered();
-
-            echo "
-              <tr >
-                <td> UserImage</td >
-                <td > 
-                        <p class='row-text-center'><b>${ServiceOffered}</b></p>        
-                        <p class='row-text-center'><b>${ServiceDescription}</b></p>          
-                </td > 
-                <td > 50</td >
-              </tr >";
-
-        }
-           echo "</table >";
-
-
-    }
-	
-	// Ferin's mess 
+ 
 	function generateTable1($ServiceArray)
     {
         echo '<div class="container spaces-top">

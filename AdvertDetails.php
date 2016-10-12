@@ -29,6 +29,8 @@ if(isset($_POST['submit']))
 
 	include("ProcessIndexes.php");
 
+	echo"added to cart successfully";
+	
 	exit();
 }
 
@@ -59,6 +61,7 @@ if(isset($_POST['submit']))
 		?>
 			<input type='submit' name='submit' value='Purchase' />
 		</form>
+		<input type='button' name='viewcart' value='viewcart' onclick="window.location.href='/timeshare/php/src/cart/DisplayCart.php'" />
 	<div class='alert alert-warning text-align-center spaces-bottom'>
 		<h3>Rate Per Hour: R<?php echo $ServiceArray[$Index]->getRatePerHour() ?></h3>
 	</div>
