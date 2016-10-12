@@ -38,12 +38,12 @@ class CreateCalendar
 			$color_positive="#5cb85c";
             foreach ($this->Days as $Day) {
                 if ((string)$arr[$this->cnt] == '0') {              
-					echo "<td colspan='3'><input type='checkbox' name='my_schedule[]' value= '$this->cnt' style='outline:10px;'";
+					echo "<td colspan='3' class='text-align-center'><input type='checkbox' name='my_schedule[]' value= '$this->cnt' style='outline:10px; '";
 					if(basename($_SERVER['PHP_SELF']) != 'CreateAdvert.php')
 						echo" onclick='return false'; disabled='disabled';";
 				echo"/></td>";
                 } else {
-					echo"<td colspan='3'><input type='checkbox' name='my_schedule[]' value= '$this->cnt' style='outline:10px' checked/>
+					echo"<td colspan='3' class='text-align-center'><input type='checkbox' name='my_schedule[]' value= '$this->cnt' style='outline:10px' checked/>
 				</td>";
                 }
                 $this->cnt++;

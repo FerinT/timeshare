@@ -24,7 +24,10 @@ if(isset($_POST['submit']))
 	// returns the indexes of "timeslots" selected by the user
 	$arr = $ProcessScheduleObject->compareSchedule($BuyingSchedule, $SellingSchedule); 
 	
-	session_start();
+	if(session_id() == '') {
+    session_start();
+	}
+	
 	$_SESSION['indexes'] = $arr;
 
 	include("ProcessIndexes.php");
@@ -43,7 +46,9 @@ if(isset($_POST['submit']))
 		<form name="advertDeatilsForm" action="AdvertDetails.php" method="POST">
 		<?php
 			$Index = $_GET['index'];
-			session_start();
+			if(session_id() == '') {
+				session_start();
+			}
 			$ServiceArray = $_SESSION['ServiceArray'];
 			$_SESSION['advertObject'] = $ServiceArray[$Index];
 

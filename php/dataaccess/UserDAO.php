@@ -8,11 +8,12 @@
 
 class UserDAO
 {
-		private $Connection;
-		
-		function __construct(){
-			$this->Connection = new mysqli("localhost", "root", "", "TIMESHARE");
-		}
+	    private $Connection;
+
+    function __construct()
+    {
+        $this->Connection = new mysqli("localhost", "root", "", "TIMESHARE");
+    }
 	
 		public function insertUser($UserObject)
 		{
@@ -50,13 +51,20 @@ class UserDAO
 	
 		public function isValidUser($email, $password)
 		{
-			$Sql = "SELECT * FROM user WHERE emailaddress = $email AND password = $password";
-			$Result = $this->Connection->query($Sql);
-			$Row = $Result->fetch_assoc();
+			$Sql = "SELECT * FROM `user` WHERE emailaddress = '${email}' AND (password) = '${password}';";
+		    $Result = $this->Connection->query($Sql);
+        	$Row = $Result->fetch_assoc();
 			
-			if(count($Row) <= 0)
+			if(count($Row) >= 0)
+			{
+				session_start();
+				$_SESSION['username'] = $Row['name'];
+				return true;
+			}
+			else
+			{
+				$_SESSION['username'] = null;
 				return false;
-			
-			return true;
+			}
 		}
 }
