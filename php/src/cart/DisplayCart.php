@@ -1,19 +1,22 @@
 <?php
 
-include dirname(__FILE__) ."/../../../pages/header.php";
+//include dirname(__FILE__) ."/../../../pages/header.php";
 include dirname(__FILE__) . "/../../../php/src/cart/Item.php";
+include dirname(__FILE__) . "/../../../php/src/cart/Cart.php";
 include dirname(__FILE__) . "/../../../php/src/user/User.php";
 include dirname(__FILE__) . "/../../../php/src/service/Service.php";
-	session_start();
+
+
+if(session_id() == '') {
+    session_start();
+}
+
 if(!isset($_SESSION['cartItems']))
 	echo"your cart is empty";
 else
 {
-
-
 	$cart = $_SESSION['cartItems'];
-
-
+	
 	   echo '<div class="container spaces-top">
 					<div class="table-responsive"> 
 						<table class="table table-bordered table-header-color">
@@ -27,7 +30,6 @@ else
 				';
 
 			foreach ($cart as $c) {
-
 				//  principle of least knowledge for who LOL
 				$SellerName = $c->getAdvert()->getUser()->getName();
 				$SellerImage = $c->getAdvert()->getUser()->getProfilePicture(); 
