@@ -21,4 +21,11 @@ What still needs to be done..<br />
 5. create funtionality in \timeshare\php\src\schedule\ProcessSchedule.php to add, and remove items from the cart (Session variable) <br />
 6. update the adverts associated schedule when a user chooses to buy "time" <br />
 <br />
+
+algorithm will be..<br />
+time = index / 7 rounded off to the nearest whole number. <br />
+x = time * 7 <br />
+day = index - x
+
+<br />
 PLENTY MORE
