@@ -23,6 +23,19 @@ class Cart
 		$_SESSION['cartItems'] = $this->Items;
 	}
 	
+	public function clearCart()
+	{
+		session_unset($_SESSION['cartItems']);
+	}
+	
+	public function removeItem()
+	{
+		$this->Items = $_SESSION['cartItems'];
+		array_splice($this->Items, $_GET['index'], 1);
+		
+		$_SESSION['cartItems'] = $this->Items;
+	}
+	
 	// add function to clear entire cart
 	// add function to remove an item from cart
 

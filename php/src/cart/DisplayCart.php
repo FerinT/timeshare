@@ -1,5 +1,7 @@
 <?php
 
+
+
 include dirname(__FILE__) . "/../../../php/src/cart/Item.php";
 include dirname(__FILE__) . "/../../../php/src/cart/Cart.php";
 include dirname(__FILE__) . "/../../../php/src/user/User.php";
@@ -10,6 +12,14 @@ include dirname(__FILE__) ."/../../../pages/header.php";
 if(session_id() == '') {
     session_start();
 }
+
+if(isset($_GET['index']))
+{
+	$Cart = new Cart();
+	$Cart->removeItem();
+	header( 'Location: DisplayCart.php' ) ;
+}
+
 
 if(!isset($_SESSION['cartItems']))
 	echo"your cart is empty";
@@ -28,7 +38,9 @@ else
 							<th class="custom-row-header row-font-size">remove</th >
 						  </tr >
 				';
-
+			
+			$cntItems = 0;
+	
 			foreach ($cart as $c) {
 				//  principle of least knowledge for who LOL
 				$SellerName = $c->getAdvert()->getUser()->getName();
@@ -48,8 +60,9 @@ else
 					</td > 
 					<td class='row-text-center' align='center'> <h3 class='row-text-center'><b>R${Price}</b></h3></td >
 					<td class='row-text-center' align='center'> <h3 class='row-text-center'><b>${TimeAndDay}</b></h3></td >
-					<td class='row-text-center' align='center'> <p class='row-text-center'><a class='btn btn-info custom-button' role='button' type=''button ><b>Remove</b></a></p></td>
+					<td class='row-text-center' align='center'><input type='button' name='removeItembtn' value='removeItembtn' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php?index=${cntItems}'\"/> </td>
 				  </tr >";
+				$cntItems++;
 			}
 
             echo"	<input type='button' type='button' value='checkout' onclick=\"window.location.href='/timeshare/UpdateSchedule.php'\"/>";
