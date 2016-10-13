@@ -1,10 +1,11 @@
 <?php
 
-//include dirname(__FILE__) ."/../../../pages/header.php";
+
 include dirname(__FILE__) . "/../../../php/src/cart/Item.php";
 include dirname(__FILE__) . "/../../../php/src/cart/Cart.php";
 include dirname(__FILE__) . "/../../../php/src/user/User.php";
 include dirname(__FILE__) . "/../../../php/src/service/Service.php";
+include dirname(__FILE__) ."/../../../pages/header.php";
 
 
 if(session_id() == '') {
