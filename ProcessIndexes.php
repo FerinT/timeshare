@@ -32,6 +32,7 @@ foreach($indexes as $index)
 	$Item->setTime($time . "h00 - ". ($time + 1) . "h00");
 	$Item->setDay($dayString);
 	$Item->setAdvert($advert);
+	$Item->setIndex($index);
 	
 	$Cart->addToCart($Item);
 	

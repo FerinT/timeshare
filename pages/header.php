@@ -3,8 +3,17 @@
 if(session_id() == '') {
     session_start();
 }
+
 	function validateLoggin() {
-		if(isset($_SESSION['username'])) {
+		
+		if(isset($_POST['logoutbtn']))
+		{
+			echo logOut();
+			header( 'Location: ../index.php' ) ;
+
+		}
+		
+		else if(isset($_SESSION['username'])) {
 			$x = $_SESSION['username'];
 			if($x == null) {
 				return notLogged();
@@ -13,14 +22,10 @@ if(session_id() == '') {
 			}
 		}
 		else
-			  return notLogged();
+			return notLogged();
 	}
 
-if(isset($_POST['logoutbtn']))
-{
-	logOut();
-	
-}
+
 	echo "
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
     <!--<meta name='keywords' content='Video downloader, download youtube, video download, youtube video, youtube downloader, download youtube FLV, download youtube MP4, download youtube 3GP, php video downloader' />-->
@@ -52,7 +57,7 @@ if(isset($_POST['logoutbtn']))
 
 
 	function loggedIn() {
-		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='Login.php'>
+		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='pages/header.php'>
 					<h4 class='inline'>Logged In As: <b>".$_SESSION['username']. "</b></h4>
 					<input type='submit' class='btn btn-danger' name='logoutbtn' value='Sign Out!'/>
 			  	</form>";  
@@ -68,8 +73,10 @@ if(isset($_POST['logoutbtn']))
 	}
 
 	function logOut() {
-		session_destroy();
-		header( 'Location: timeshare/index.php' ) ;
+		if(session_id() != '') {
+   			session_destroy();
+		}
+		
 		return notLogged();
 	}
 ?>

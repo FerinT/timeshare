@@ -9,7 +9,8 @@ class Item
 {
 	private $Day;
 	private $Time;
-	private $Advert; // value object
+	private $Index;
+	private $Advert; // value object (An advert is a service)
 
 	function __construct()
 	{
@@ -31,6 +32,11 @@ class Item
 		$this->Advert = $Advert;
 	}
 	
+	public function setIndex($Index)
+	{
+		$this->Index = $Index;
+	}
+	
 	// getters
 	public function getDay()
 	{
@@ -45,6 +51,11 @@ class Item
 	public function getAdvert()
 	{
 		return $this->Advert;
+	}
+	
+	public function getIndex()
+	{
+		return $this->Index;
 	}
 
 }

@@ -1,5 +1,7 @@
 <?php
 
+include_once dirname(__FILE__) . "/../src/schedule/Schedule.php";
+
 class ScheduleDAO
 {
 
@@ -33,6 +35,17 @@ class ScheduleDAO
         $Table->createCalendar($Data);
 
     }
+	
+	public function updateSchedule($ScheduleObject)
+	{
+
+		$arr = $ScheduleObject->getScheduleArray();
+		$id = $ScheduleObject->getScheduleID();
+		
+		$Sql = "UPDATE Schedule SET ScheduleArray = '${arr}' WHERE ScheduleID = ${id}";
+		
+		$Result = $this->Connection->query($Sql);
+	}
 
 }
 

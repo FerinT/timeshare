@@ -71,11 +71,11 @@ class ServiceDAO
                 $ScheduleObject->setScheduleArray($Row['ScheduleArray']);
                 $ServiceFound->setSchedule($ScheduleObject);
 
-                array_push($ServiceArray, $ServiceFound);
+                //array_push($ServiceArray, $ServiceFound);
 
 
             }
-			return $ServiceArray;
+			return $ServiceFound;
            
         }
 
