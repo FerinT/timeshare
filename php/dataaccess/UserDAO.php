@@ -6,9 +6,14 @@
  * 
  */
 
+if(session_id() == '') {
+   session_start();
+}
+
+
 class UserDAO
 {
-	    private $Connection;
+	 private $Connection;
 
     function __construct()
     {
@@ -31,7 +36,7 @@ class UserDAO
 
 		} 
 		
-		// by pass UserObject as a parameter it avoids us having to include the User class which cause a cycilic dependancy
+		// by passing UserObject as a parameter it avoids us having to include the User class which cause a cyclic dependency
 		public function readUser($UserObject)
 		{
 			$id = $UserObject->getUserId();
@@ -57,13 +62,15 @@ class UserDAO
 			
 			if(count($Row) >= 0)
 			{
-				session_start();
 				$_SESSION['username'] = $Row['name'];
+				$_SESSION['userID'] = $Row['userid'];
+				
 				return true;
 			}
 			else
 			{
 				$_SESSION['username'] = null;
+				
 				return false;
 			}
 		}

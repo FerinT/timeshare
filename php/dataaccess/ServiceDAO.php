@@ -6,12 +6,13 @@ include_once dirname(__FILE__) . "/../src/user/User.php";
 
 class ServiceDAO
 {
-    private $Connection;
+     private $Connection;
 
     function __construct()
     {
         $this->Connection = new mysqli("localhost", "root", "", "TIMESHARE");
     }
+	
 
     public function insertService($Service)
     {
@@ -25,10 +26,12 @@ class ServiceDAO
         $ServiceDescription = $Service->getServiceDescription();
         $ServiceOffered = $Service->getServiceOffered();
 
-        $Sql = "INSERT INTO service ( ScheduleID, UserID,ServiceOffered, ServiceDescription ,Category, RatePerHour, Location, SubCategories)
-        VALUES ( ${ScheduleId}, ${UserId},${ServiceOffered},${ServiceDescription}, '${Category}', '${RatePerHour}', '${Location}', '${SubCategories}')";
+		
+		$sql = "INSERT INTO Service (ScheduleID, UserID, ServiceOffered, ServiceDescription, Category, RatePerHour, Location, SubCategories) VALUES (${ScheduleId}, ${UserId} ,'${ServiceOffered}','${ServiceDescription}','${Category}','${RatePerHour}','${Location}','${SubCategories}')";
+		
 
-        $this->Connection->query($Sql);
+        $Result = $this->Connection->query($sql);
+		
     }
 
     // Select a specific schedule by using a the primary key

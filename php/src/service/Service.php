@@ -7,7 +7,9 @@ class Service
 
     private $ServiceId;
     private $Schedule;
+	private $ScheduleID;
     private $User;
+	private $UserID;
     private $ServiceOffered;
     private $ServiceDescription;
     private $Category;
@@ -33,13 +35,23 @@ class Service
 	// strictly to accommodate the insert statements in ServiceDAO
 	public function getUserId()
 	{
-		return $this->User->getUserId();
+		return $this->UserId;
 	}
 	// strictly to accommodate the insert statements in ServiceDAO
 	public function getScheduleId()
 	{
-		return $this->Schedule->getScheduleID();
+		return $this->ScheduleID;
+	}	
+		
+	public function setUserId($UserID)
+	{
+		 $this->UserId = $UserID;
 	}
+	
+	public function setScheduleId($ScheduleID)
+	{
+		 $this->ScheduleID = $ScheduleID;
+	}	
 	
     public function getServiceOffered()
     {
@@ -49,7 +61,7 @@ class Service
     public function setServiceOffered($ServiceOffered)
     {
         $this->ServiceOffered = $ServiceOffered;
-    }
+	}
 
     public function getServiceDescription()
     {

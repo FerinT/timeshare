@@ -15,6 +15,10 @@ class ScheduleDAO
 		$ScheduleString = implode($Arr, ',');
         $Sql = "INSERT INTO Schedule(ScheduleArray) VALUES('$ScheduleString')";
         $this->Connection->query($Sql);
+		
+		$id = $this->Connection->insert_id;
+		
+		return $id;
     }
 
     // Select a specific schedule by using a the primary key
