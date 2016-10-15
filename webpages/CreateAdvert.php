@@ -1,8 +1,13 @@
 <?php
 
-if(session_id() == '') {
-   session_start();
-}
+		if(session_id() == '') {
+		   session_start();
+		}
+
+		if(!isset($_SESSION['username']) || $_SESSION['username'] == null)
+		{
+			echo "<script type=\"text/javascript\">window.alert('You must be a registered user.');window.location.href = '../index.php';</script>";
+		}
 
 		include_once dirname(__FILE__) . "/../php/src/schedule/CreateCalendar.php";
 		
@@ -45,7 +50,7 @@ if(session_id() == '') {
 				
 				
 				$ServiceDAOobject->insertService($ServiceOject);
-				
+				header( 'Location: ../DisplayAdverts.php' ) ;
 				// STEPS TO SAVE AN ADVERT 
 				// get the userID
 				// save the schedule and return the scheduleID

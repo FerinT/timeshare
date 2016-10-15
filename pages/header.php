@@ -42,12 +42,12 @@ if(session_id() == '') {
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
           </button>
-          <a class='navbar-brand' href='index.php'>Timeshare - Let\'s Make Time</a>
+          <a class='navbar-brand' href='index.php'>Timeshare - Let's Make Time</a>
         </div>
         <div id='navbar' class='navbar-collapse collapse altered-container'>
 			<ul class='nav navbar-nav'>
-            <li><a href='pages/about.html'>About Us</a></li>
-            <li><a href='pages/service.html'>Service</a></li>
+            <li><a href='DisplayAdverts.php'>View Adverts</a></li>
+            <li><a href='webpages/CreateAdvert.php'>Create Advert</a></li>
             <li><a href='pages/contact.html'>Contact Us</a></li>
 		    </ul>".validateLoggin()."
         </div><!--/.navbar-collapse -->
