@@ -34,6 +34,8 @@
 		
 		$ScheduleDAOobject->updateSchedule($ScheduleObject);
 		
+		session_unset($_SESSION['cartItems']);
+		
 	}
 
 

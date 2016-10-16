@@ -1,7 +1,5 @@
 <?php
 
-
-
 include dirname(__FILE__) . "/../../../php/src/cart/Item.php";
 include dirname(__FILE__) . "/../../../php/src/cart/Cart.php";
 include dirname(__FILE__) . "/../../../php/src/user/User.php";
@@ -65,7 +63,7 @@ else
 				$cntItems++;
 			}
 
-            echo"	<input type='button' type='button' value='checkout' onclick=\"window.location.href='/timeshare/UpdateSchedule.php'\"/>";
+            echo"<input type='button' type='button' value='checkout' onclick=\"window.location.href='/timeshare/UpdateSchedule.php'\"/>";
 
 		 echo "</table ></div></div>
 					<div class='alert alert-info footer'>
