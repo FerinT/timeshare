@@ -38,7 +38,7 @@ foreach ($cart as $item) {
 }
 
 // Insert into order line table
-$Transaction = new Transaction($_SESSION['userID'], date("Y-m-d H:i:s"), $TotalPrice);
+$Transaction = new Transaction($_SESSION['userID'], date("Y-m-d H:i:s"));
 $TransactionDAOobject->saveTransaction($Transaction, $cart);
 session_unset($_SESSION['cartItems']);
 

@@ -89,7 +89,9 @@ CREATE TABLE `TransactionLine` (
   `ServiceID` int(11) NOT NULL,
   `TransactionID` int(11) NOT NULL,
   `RatePerHour` varchar(30) NOT NULL,
-  `Quantity` int(11) NOT NULL
+  `Quantity` int(11) NOT NULL,
+  `Day`  varchar(30) NOT NULL,
+  `Time`  varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

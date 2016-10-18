@@ -28,15 +28,18 @@ class TransactionDAO
         $DateofSale = $orderInformation->getDateOfSale();
 
         $Sql = "INSERT INTO TRANSACTION (BuyerID,DateOfSale) VALUES ('$BuyerID','$DateofSale')";
-        $transactionID =  $this->Connection->query($Sql);
+        $this->Connection->query($Sql);
+        $transactionID = $this->Connection->insert_id;
 
 
         foreach ($cart as $item) {
 
             $ServiceID = $item->getAdvert()->getServiceId();
             $RatePerHour = $item->getAdvert()->getRatePerHour();
+            $Day = $item->getDay();
+            $Time = $item->getTime();
 
-            $Sql = "INSERT INTO TransactionLine (ServiceID, TransactionID, RatePerHour, Quantity) VALUES ('$ServiceID','$transactionID','$RatePerHour','1')";
+            $Sql = "INSERT INTO TransactionLine (ServiceID, TransactionID, RatePerHour, Quantity, Day, Time) VALUES ('$ServiceID','$transactionID','$RatePerHour','1', '$Day','$Time' )";
             $this->Connection->query($Sql);
 
         }
