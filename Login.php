@@ -8,13 +8,10 @@ $User = new UserDAO();
 
 $isValid = $User->isValidUser($details[0], $details[1]);
 
-if($isValid)
-{
-	header( 'Location: DisplayAdverts.php' ) ;
-}
-else
-{
-	echo"fail";
+if ($isValid === true) {
+    header('Location: DisplayAdverts.php');
+} else {
+    echo "fail";
 }
 
 

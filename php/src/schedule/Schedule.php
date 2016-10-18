@@ -29,7 +29,4 @@ class Schedule
         $this->ScheduleArray = $ScheduleArray;
     }
 
-
-
-
 }

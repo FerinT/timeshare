@@ -75,8 +75,7 @@ CREATE TABLE `Service` (
 CREATE TABLE `Transaction` (
   `TransactionID` int(11) NOT NULL,
   `BuyerID` int(11) NOT NULL,
-  `DateOfSale` varchar(30) NOT NULL,
-  `SellerID` int(11) NOT NULL
+  `DateOfSale` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
