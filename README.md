@@ -14,6 +14,15 @@ The CreateAdvert.php and DisplayCart.php need CSS. <br />
 3. ensuring that a user is logged in before the "confirming purchase" <br />
 4. insert in the Transaction and TransactionLine tables when a user buys something <br />
 5. Create a "my profile" page for the user to see what they've sold/selling 
+
+## Email Help
+
+ 1. Clone swiftmailer at https://github.com/swiftmailer/swiftmailer.git and replace the empty swiftmailer file in our project
+    with the cloned repo.
+   
+ 2. Also in Xamp or Wamp find the php.ini file and edit ;extension=php_openssl.dll to extension=php_openssl.dll
+    or add extension=php_openssl.dll if id doesnt exsist.
+
 <br />
 
 <br />
