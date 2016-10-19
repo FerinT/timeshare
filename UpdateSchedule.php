@@ -77,7 +77,7 @@ foreach ($a as $key => $value) {
     $setup->mail($_SESSION['username'], $EmailSubject, $key, $EmailBody);
 
 }
-
+$Invoiceoutput.="\n\nTotal Cost = ".$_SESSION['totalCartCost'];
 //Send Invoice to logged in user
 $body = "INVOICE \n".$Invoiceoutput;
 $setup->mail("TimeShare","Invoice",$_SESSION['email'],$body);

@@ -36,7 +36,7 @@ else {
 				';
 
     $cntItems = 0;
-
+    $totalCartCost = 0.0;
     foreach ($cart as $c) {
         //  principle of least knowledge for who LOL
         $SellerName = $c->getAdvert()->getUser()->getName();
@@ -59,10 +59,15 @@ else {
 					<td class='row-text-center' align='center'> <h3 class='row-text-center'><b>R${Price}</b></h3></td >
 					<td class='row-text-center' align='center'> <h3 class='row-text-center'><b>${TimeAndDay}</b></h3></td >
 					<td class='row-text-center' align='center'><input type='button' name='removeItembtn' value='removeItembtn' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php?index=${cntItems}'\"/> </td>
-				  </tr >";
+				  ";
         $cntItems++;
+        $totalCartCost = $totalCartCost+ $Price;
     }
-
+    $_SESSION['totalCartCost'] = $totalCartCost;
+    echo "<td class='row-text-center' align='center'><h3 class='row-text-center'><b>Total cost: R${totalCartCost}</b></h3> </td>
+				  </tr >";
+    
+    
     echo "<input type='button' type='button' value='checkout' onclick=\"window.location.href='/timeshare/UpdateSchedule.php'\"/>";
 
     echo "</table ></div></div>
