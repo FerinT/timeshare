@@ -66,6 +66,7 @@ class UserDAO
 			{
 				$_SESSION['username'] = $Row['name'];
 				$_SESSION['userID'] = $Row['userid'];
+                $_SESSION['email'] =$Row['emailaddress'];
 
 				return true;
 			}

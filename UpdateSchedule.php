@@ -10,6 +10,8 @@ include_once dirname(__FILE__) . "/php/dataaccess/ScheduleDAO.php";
 include_once dirname(__FILE__) . "/php/dataaccess/TransactionDAO.php";
 include_once dirname(__FILE__) . "/php/src/transaction/Transaction.php";
 
+require_once('MailSetup.php');
+
 
 if (session_id() == '') {
     session_start();
@@ -19,7 +21,9 @@ $cart = $_SESSION['cartItems'];
 $ServiceDAOobject = new ServiceDAO();
 $ScheduleDAOobject = new ScheduleDAO();
 $TransactionDAOobject = new TransactionDAO();
-
+$setup = new MailSetup();
+$Invoiceoutput = "";
+$a = array();
 foreach ($cart as $item) {
     $ServiceID = $item->getAdvert()->getServiceId();
 
@@ -34,8 +38,49 @@ foreach ($cart as $item) {
     $ScheduleArray[$item->getIndex()] = '0';
     $ScheduleObject->setScheduleArray(implode(',', $ScheduleArray));
     $ScheduleDAOobject->updateSchedule($ScheduleObject);
-    
+
+    //Transaction Email information
+
+    $SellerID = $item->getAdvert()->getUser()->getUserId();
+    $SellerName = $item->getAdvert()->getUser()->getName();
+    $SellerEmail = $item->getAdvert()->getUser()->getEmailAddress();
+    $datetime = $item->getDay() . $item->getTime();
+    $description = $item->getAdvert()->getServiceDescription();
+
+    if (array_key_exists($SellerEmail, $a)) {
+        $a[$SellerEmail] .= $description . " on " . $datetime . " }";
+
+    } else {
+        $a[$SellerEmail] = $description . " on " . $datetime . " }";
+
+    }
+
+    //Setup Invoice Information
+    $Invoiceoutput .= "Seller Name: ".$item->getAdvert()->getUser()->getName() . " Advert: " . $item->getAdvert()->getServiceDescription() . " Rate: " . $item->getAdvert()->getRatePerHour() . " Date: " . $datetime."\n";
 }
+
+//Send Transaction Emails to Sellers
+foreach ($a as $key => $value) {
+
+    $EmailSubject = "Advert Inquiry";
+    $EmailIntro = "I am interested the following services: \n";
+    $ListOfServices = explode(" }", $value);
+    $EmailBody = $EmailIntro;
+
+    foreach ($ListOfServices as $service) {
+       $EmailBody .= $service . "\n";
+    }
+
+    $EmailFooter = "\n\n Please contact me via email " . $_SESSION['email'];
+
+    $EmailBody .= $EmailFooter;
+    $setup->mail($_SESSION['username'], $EmailSubject, $key, $EmailBody);
+
+}
+
+//Send Invoice to logged in user
+$body = "INVOICE \n".$Invoiceoutput;
+$setup->mail("TimeShare","Invoice",$_SESSION['email'],$body);
 
 // Insert into order line table
 $Transaction = new Transaction($_SESSION['userID'], date("Y-m-d H:i:s"));

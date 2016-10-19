@@ -44,6 +44,8 @@ else {
         $Description = $c->getAdvert()->getServiceDescription();
         $Price = $c->getAdvert()->getRatePerHour();
         $TimeAndDay = $c->getDay() . $c->getTime();
+        $SellerEmail = $c->getAdvert()->getUser()->getEmailAddress();
+
 
         echo "
 				  <tr class='active'>
