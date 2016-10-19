@@ -32,7 +32,7 @@ if(session_id() == '') {
 	<link href='css/custom.css' rel='stylesheet'>
 	<link rel='stylesheet' href='css/bootstrap.min.css'>
 	<link rel='stylesheet' href='css/bootstrap-theme.min.css'>
-	
+
 	<nav class='navbar navbar-dark bg-primary navbar-static-top remove-margin-bottom'>
       <div>
         <div class='navbar-header altered-menu'>
@@ -58,17 +58,20 @@ if(session_id() == '') {
 
 	function loggedIn() {
 		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='pages/header.php'>
-					<h4 class='inline'>Logged In As: <b>".$_SESSION['username']. "</b></h4>
+					<h4 class='inline'>Hi <b>".$_SESSION['username']. "!</b></h4>
+					<button type='button' name='profile' class='btn btn-info glyphicon glyphicon-user spaces-right-header' onclick=\"window.location.href='/timeshare/pages/profile.php'\"'></button>
+					<button type='button' class='btn btn-success glyphicon glyphicon-shopping-cart spaces-right-header' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php'\"></button>
 					<input type='submit' class='btn btn-danger' name='logoutbtn' value='Sign Out!'/>
-			  	</form>";  
+			  	</form>
+				";  
 	}
 
 	function notLogged() {
 		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='Login.php'>
 				Email Address: <input type='text' class='text-color' name='details[0]' value=''/>
-				Password: <input type='text' class='text-color' name='details[1]' value=''/>
+				Password: <input type='password' class='text-color' name='details[1]' value=''/>
 				<input type='submit' class='btn btn-success ' name='submit' value='Sign in'/>
-				<input type='button' type='button' value='Take Out!' class='btn btn-default btn-sm button-cart' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php'\"/>
+				<button class='btn btn-info btn-md glyphicon glyphicon-shopping-cart spaces-right' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php'\"></button>
 			  </form>";
 	}
 

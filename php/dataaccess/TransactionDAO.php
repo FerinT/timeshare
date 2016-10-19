@@ -27,7 +27,7 @@ class TransactionDAO
         $BuyerID = $orderInformation->getBuyerID();
         $DateofSale = $orderInformation->getDateOfSale();
 
-        $Sql = "INSERT INTO TRANSACTION (BuyerID,DateOfSale) VALUES ('$BuyerID','$DateofSale')";
+        $Sql = "INSERT INTO Transaction (BuyerID,DateOfSale) VALUES ('$BuyerID','$DateofSale')";
         $this->Connection->query($Sql);
         $transactionID = $this->Connection->insert_id;
 

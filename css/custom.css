@@ -3,6 +3,11 @@
 	margin-right:10px!important;
 }
 
+.altered-container-account 	{
+	margin-left:130px!important;
+	margin-right:130px!important;
+}
+
 .altered-menu 	{
 	margin-left:0px!important;
 	margin-right:0px!important;
@@ -30,6 +35,10 @@
 
 .spaces-right {
 	margin-right:20px;
+}
+
+.spaces-right -header{
+	margin-right:10px;
 }
 
 .register-button {
@@ -62,6 +71,13 @@
 
 .fonts {
 	font-size:60px;
+	margin-bottom:0px!important;
+	padding-bottom:0px!important;
+	background-color:rgba(238, 238, 238, 0)!important;
+}
+
+.fonts-account {
+	font-size:20px;
 	margin-bottom:0px!important;
 	padding-bottom:0px!important;
 	background-color:rgba(238, 238, 238, 0)!important;
