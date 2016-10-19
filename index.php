@@ -21,7 +21,7 @@
 							<p>Email Address: <input type='text' name='details[1]' class="form-control custom-control" value="<?php if(isset($_POST['submit'])){ $details = $_POST['details']; echo $details[1]; }?>"/> </p>		
 							<p>Password: <input type='password' class="form-control custom-control" name='details[2]' value=""/> </p>
 							<p>Confirm Password: <input type='password' class="form-control custom-control" name='details[3]' value=""/> </p>
-							<p>Profile picture: <input type='file' class="btn btn-success" name='image' accept="image/jpeg" value="" /> </p>
+							<p>Profile picture: <input type='file' class="form-control" name='image' accept="image/jpeg" value="" /> </p>
 							<p><input type='submit' name='submit' class="btn btn-info btn-lg register-button" value='Register'/>
 						</form>			
 					</div>

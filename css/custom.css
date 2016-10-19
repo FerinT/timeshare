@@ -163,7 +163,9 @@ hr {
 }
 
 .custom-control {
-	border:1px solid rgba(0, 0, 0, 0.55)!important
+	border:1px solid rgba(0, 0, 0, 0.55)!important;
+	color:black!important;
+	font-size: large!important;
 }
 
 .search-field {
