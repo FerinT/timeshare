@@ -42,7 +42,7 @@
 		<div class="container-fluid altered-container-account">
 		<h2 class="page-header">Account Dashboard</h2>
 			<div class="row">
-				<div class="col-md-4" style="width:400px">
+				<div class="col-md-4">
 					<div class="panel panel-primary">
 						<form name="registerForm" action="#" method="POST">
 							<div align="center" class="panel-heading"><h4>View/Update Profile</h4></div>
@@ -52,8 +52,8 @@
 							<div align="center">Name</div>
 								<p><input type="text" class="form-control custom-control" value="'.$Row['name'].'"/></p>
 							<div align="center">Email Address</div>
-								<p><input type="text" class="form-control custom-control" value="'.$Row['emailaddress'].'" dis/></p>
-							<div align="center" class="spaces-bottom" ><input type="submit" value="Update Profile" class="btn btn-success spaces-right"><input type="button" class="btn btn-info spaces-right" value="Change Password"/></div>
+								<p><input type="text" class="form-control custom-control" value="'.$Row['emailaddress'].'" disabled/></p>
+							<div align="center" class="spaces-bottom spaces-top" ><input type="button" value="Update Profile" class="btn btn-success spaces-right" data-toggle="modal" data-target="#myModal2"> <input type="button" class="btn btn-info spaces-right" data-toggle="modal" data-target="#myModal" value="Change Password"/></div>
 						</form>
 					</div>
 				</div>
@@ -78,15 +78,54 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="alert alert-info footer">
-			<p>This website is protected by law and is copyrighted to the owners and all those that are involved</p>
+		
+		<div id="myModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog middle-buttons panel custom-panel">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title page-header"><b>Change My Password Please</b></h4>
+			  </div>
+			  <div align="center" class="modal-body">
+				<h4>Current Password</h4>
+					<input type="password" class="form-control custom-control spaces-bottom" name="old_password" value=""/>
+				<h4>New Password</h4>
+					<input type="password" class="form-control custom-control spaces-bottom" name="new_password" value=""/>
+				<h4>Confirm New Password</h4>
+					<input type="password" class="form-control custom-control" name="confirm_new_password" value=""/>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		
+		<div id="myModal2" class="modal fade" role="dialog">
+		  <div class="modal-dialog middle-buttons panel custom-panel">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"></button>
+				<h4 class="modal-title page-header"><b>Account</b></h4>
+			  </div>
+			  <div align="center" class="modal-body">
+			  	<p>Successfully Updated Details!</p>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			  </div>
+			</div>
+		  </div>
 		</div>
 
-		<script src="js/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
-		<script>window.jQuery || document.write(\'<script src="js/vendor/jquery.min.js"><\/script>\')</script>
-		<script src="js/tether.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+		'; 
+
+	include 'footer.php';
+
+	echo '
+	
 	</body>
 	</html>';
 

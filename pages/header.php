@@ -25,7 +25,6 @@ if(session_id() == '') {
 			return notLogged();
 	}
 
-
 	echo "
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
     <!--<meta name='keywords' content='Video downloader, download youtube, video download, youtube video, youtube downloader, download youtube FLV, download youtube MP4, download youtube 3GP, php video downloader' />-->
@@ -42,7 +41,7 @@ if(session_id() == '') {
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
           </button>
-          <a class='navbar-brand' href='index.php'>Timeshare - Let's Make Time</a>
+          <a class='navbar-brand' href='/timeshare/index.php'>Timeshare - Let's Make Time</a>
         </div>
         <div id='navbar' class='navbar-collapse collapse altered-container'>
 			<ul class='nav navbar-nav'>

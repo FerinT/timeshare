@@ -86,5 +86,5 @@ $setup->mail("TimeShare","Invoice",$_SESSION['email'],$body);
 $Transaction = new Transaction($_SESSION['userID'], date("Y-m-d H:i:s"));
 $TransactionDAOobject->saveTransaction($Transaction, $cart);
 session_unset($_SESSION['cartItems']);
-
+header( 'Location: DisplayAdverts.php' ) ;
 ?>
