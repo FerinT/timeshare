@@ -6,7 +6,7 @@ How to run this..
 2. run the page /timeshare ( This takes you to the homepage)
 
 ## More Info:
-The CreateAdvert.php and DisplayCart.php need CSS. <br />
+The CreateAdvert.php needs CSS. The user now gets inserted into the verification table and not user table however in RegisterDAO I am unable to add user to user table when they verify. still need to add the line in the login that checks if they're in the verification table <br />
 
 ## What still needs to be done..<br />
 1. verification emails to be sent when registering<br />
@@ -24,6 +24,3 @@ The CreateAdvert.php and DisplayCart.php need CSS. <br />
     or add extension=php_openssl.dll if id doesnt exsist.
 
 <br />
-
-<br />
-PLENTY MORE
