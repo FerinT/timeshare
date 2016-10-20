@@ -7,7 +7,16 @@
 	{
 		$Register = new RegisterDAO();
 		
-		$Register->isRegisterUser($_POST['verificationCode'], $_POST['emailAddress']);
+		$isVerifiedUser = $Register->isRegisterUser($_POST['verificationCode'], $_POST['emailAddress']);
+		
+		if($isVerifiedUser == true){
+						echo "<script type='text/javascript'>alert('Valid code! please complete registration and login');</script>";
+			header('Location: ../index.php');		
+		}
+		else{
+			echo "<script type='text/javascript'>alert('Invalid code!');</script>";
+		}
+			
 	}
 
 

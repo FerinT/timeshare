@@ -27,7 +27,7 @@ class RegisterDAO
 			$verificationCode = $RegisterObject->getVerificationCode();
 
 
-			$sql = "INSERT INTO registration (emailaddress, name, password, code, profilepicture) VALUES ('$email','$name','$password', '$verificationCode', '$contents')";
+			$sql = "INSERT INTO Registration (emailaddress, name, password, code, profilepicture) VALUES ('$email','$name','$password', '$verificationCode', '$contents')";
 
 			$this->Connection->query($sql);
 
@@ -37,23 +37,25 @@ class RegisterDAO
 
 		public function isVerifiedUser($Email)
 		{
-			$Sql = "SELECT * FROM registration WHERE emailaddress = '$Email'";
+			$Sql = "SELECT * FROM Registration WHERE emailaddress = '$Email'";
 			$Result = $this->Connection->query($Sql);
 			$Row = $Result->fetch_assoc();
 			
 			if(count($Row) > 0)
-				return false;
+				return false;s
 			else
 				return true;
 		}
 		
 		public function isRegisterUser($Code, $Email){
-			$Sql = "SELECT * FROM `registration` WHERE emailaddress = '${Email}' AND (code) = '${Code}';";
+			$Sql = "SELECT * FROM `Registration` WHERE emailaddress = '${Email}' AND (code) = '${Code}';";
 		    $Result = $this->Connection->query($Sql);
         	$Row = $Result->fetch_assoc();
 			
+			
+			
 			if(count($Row) > 0){
-				$UserObject = new User();
+				$UserObject = new User;
 				
 				$UserObject->setEmailAddress($Row['emailaddress']);
 				$UserObject->setName($Row['name']);
@@ -61,15 +63,16 @@ class RegisterDAO
 				$UserObject->setProfilePicture($Row['profilepicture']);
 				$id = $Row['id'];
 	
-				// delete record
-				$SqlDelete = "DELETE FROM registration WHERE id = $id";
-				$Result = $this->Connection->query($SqlDelete);
-				
 				// insert into user table
-				mysqli_close($this->Connection);
+				//mysqli_close($this->Connection);
 				$Userdao = new UserDAO;
 				$Userdao->insertUser($UserObject);
 			
+				
+				// delete record
+				$SqlDelete = "DELETE FROM Registration WHERE id = $id";
+				$Result = $this->Connection->query($SqlDelete);
+				
 			
 				return true;
 			}

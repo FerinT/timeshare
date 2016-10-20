@@ -22,8 +22,7 @@ class UserDAO
 
 		public function insertUser($UserObject)
 		{
-			// this needs to change to the $UserObject->getProfilePicture();
-			// $contents = addslashes(file_get_contents("php/dataaccess/a.jpg"));
+
 			$contents = $UserObject->getProfilePicture();
 			$email = $UserObject->getEmailAddress();
 			$name = $UserObject->getName();

@@ -40,9 +40,6 @@ if(isset($_POST['submit']))
 	
 	$RegisterDAO->insertRegister($Register);
 
-//    $UserDAO->insertUser($UserObject);
-//    $UserDAO->isValidUser($UserInfo[1],$UserInfo[3]);
-
     
 	header( 'Location: EnterVerificationCode.php' ) ;
 }
