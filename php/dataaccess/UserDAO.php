@@ -33,7 +33,7 @@ class UserDAO
 			$sql = "INSERT INTO user (userid, emailaddress, name, password, profilepicture) VALUES (NULL, '$email','$name','$password', '$contents')";
 
 			$this->Connection->query($sql);
-
+			
             $id = $this->Connection->insert_id;
             return $id;
 		}
@@ -62,7 +62,7 @@ class UserDAO
 		    $Result = $this->Connection->query($Sql);
         	$Row = $Result->fetch_assoc();
 
-			if(count($Row) >= 0)
+			if(count($Row) > 0)
 			{
 				$_SESSION['username'] = $Row['name'];
 				$_SESSION['userID'] = $Row['userid'];

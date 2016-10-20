@@ -3,8 +3,9 @@
 if(isset($_POST['submit']))
 {
 
+	include_once dirname(__FILE__) . '/../php/src/register/Register.php';
 	include_once dirname(__FILE__) . '/../php/src/user/User.php';
-	include_once dirname(__FILE__) . '/../php/dataaccess/UserDAO.php';
+	include_once dirname(__FILE__) . '/../php/dataaccess/RegisterDAO.php';
 
 	$UserInfo = $_POST['details'];
 
@@ -29,13 +30,21 @@ if(isset($_POST['submit']))
 	$UserObject->setEmailAddress($UserInfo[1]);
 	$UserObject->setProfilePicture($contents);
 	$UserObject->setPassword($UserInfo[3]);
-	$UserDAO = new UserDAO;
+	
+	$RegisterDAO = new RegisterDAO;
+	
+	$Register = new Register();
+	$Register->setUser($UserObject);
+	$RandomCode = mt_rand(100000,999999); 
+	$Register->setVerificationCode($RandomCode);
+	
+	$RegisterDAO->insertRegister($Register);
 
-    $UserDAO->insertUser($UserObject);
-    $UserDAO->isValidUser($UserInfo[1],$UserInfo[3]);
+//    $UserDAO->insertUser($UserObject);
+//    $UserDAO->isValidUser($UserInfo[1],$UserInfo[3]);
 
     
-	header( 'Location: ../DisplayAdverts.php' ) ;
+	header( 'Location: EnterVerificationCode.php' ) ;
 }
 
 
