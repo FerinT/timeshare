@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head><title>Timeshare</title></head>
+<head>
+	<title>Timeshare</title></head>
 <body class="font-color">
 	
 	<?php include dirname(__FILE__).'/pages/header.php' ?>

@@ -58,19 +58,21 @@ else {
 					</td > 
 					<td class='row-text-center' align='center'> <h3 class='row-text-center'><b>R${Price}</b></h3></td >
 					<td class='row-text-center' align='center'> <h3 class='row-text-center'><b>${TimeAndDay}</b></h3></td >
-					<td class='row-text-center' align='center'><input type='button' name='removeItembtn' value='removeItembtn' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php?index=${cntItems}'\"/> </td>
+					<td class='row-text-center' align='center'><input type='button' name='removeItembtn' value='Remove Item' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php?index=${cntItems}'\"/> </td>
 				  ";
         $cntItems++;
-        $totalCartCost = $totalCartCost+ $Price;
+        $totalCartCost = $totalCartCost + $Price;
     }
+	
+	
     $_SESSION['totalCartCost'] = $totalCartCost;
     echo "<td class='row-text-center' align='center'><h3 class='row-text-center'><b>Total cost: R${totalCartCost}</b></h3> </td>
 				  </tr >";
     
     
-    echo "<input type='button' type='button' value='checkout' onclick=\"window.location.href='/timeshare/UpdateSchedule.php'\"/>";
+    echo "<tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td> <input type='button' type='button' value='checkout' onclick=\"window.location.href='/timeshare/UpdateSchedule.php'\"/> </td></tr>";
 
-    echo "</table ></div></div>
+    echo "</table></div></div>
 					<div class='alert alert-info footer'>
 						<p>This website is protected by law and is copyrighted to the owners and all those that are involved</p>
 					</div></body>

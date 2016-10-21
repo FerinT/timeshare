@@ -42,7 +42,7 @@ class RegisterDAO
 			$Row = $Result->fetch_assoc();
 			
 			if(count($Row) > 0)
-				return false;s
+				return false;
 			else
 				return true;
 		}
