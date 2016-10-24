@@ -9,7 +9,7 @@ if(session_id() == '') {
 		if(isset($_POST['logoutbtn']))
 		{
 			echo logOut();
-			header( 'Location: ../index.php' ) ;
+			header( 'Location: index.php' ) ;
 
 		}
 		
@@ -41,12 +41,12 @@ if(session_id() == '') {
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
           </button>
-          <a class='navbar-brand' href='/timeshare/index.php'>Timeshare - Let's Make Time</a>
+          <a class='navbar-brand' href='index.php'>Timeshare - Let's Make Time</a>
         </div>
         <div id='navbar' class='navbar-collapse collapse altered-container'>
 			<ul class='nav navbar-nav'>
-            <li><a href='DisplayAdverts.php'>View Adverts</a></li>
-            <li><a href='webpages/CreateAdvert.php'>Create Advert</a></li>
+            <li><a href='../pages/DisplayAdverts.php'>View Adverts</a></li>
+            <li><a href='../pages/CreateAdvert.php'>Create Advert</a></li>
 			<!-- <li><a href='pages/contact.html'>Contact Us</a></li> -->
 		    </ul>".validateLoggin()."
         </div><!--/.navbar-collapse -->
@@ -56,23 +56,23 @@ if(session_id() == '') {
 
 
 	function loggedIn() {
-		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='pages/header.php'>
+		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='header.php'>
 					<h4 class='inline'>Hi <b>".$_SESSION['username']. "!</b></h4>
 					<button type='button' name='profile' class='btn btn-info glyphicon glyphicon-user spaces-right-header' onclick=\"window.location.href='/timeshare/pages/profile.php'\"'></button>
 					<input type='submit' class='btn btn-danger' name='logoutbtn' value='Sign Out!'/>
 			  	</form>
-				<button type='button' class='btn btn-success glyphicon glyphicon-shopping-cart spaces-right-header' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php'\"></button>
+				<button type='button' class='btn btn-success glyphicon glyphicon-shopping-cart spaces-right-header' onclick=\"window.location.href='DisplayCart.php'\"></button>
 					
 				";  
 	}
 
 	function notLogged() {
-		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='Login.php'>
+		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='../Login.php'>
 				Email Address: <input type='text' class='text-color' name='details[0]' value=''/>
 				Password: <input type='password' class='text-color' name='details[1]' value=''/>
 				<input type='submit' class='btn btn-success ' name='submit' value='Sign in'/>	
 			  </form>
-			  <button class='btn btn-info btn-md glyphicon glyphicon-shopping-cart spaces-right' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php'\"></button>";
+			  <button class='btn btn-info btn-md glyphicon glyphicon-shopping-cart spaces-right' onclick=\"window.location.href='DisplayCart.php'\"></button>";
 	}
 	// that button can't be in the form because then it doesnt go to the next page
 	function logOut() {

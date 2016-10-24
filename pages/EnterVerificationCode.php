@@ -10,8 +10,7 @@
 		$isVerifiedUser = $Register->isRegisterUser($_POST['verificationCode'], $_POST['emailAddress']);
 		
 		if($isVerifiedUser == true){
-						echo "<script type='text/javascript'>alert('Valid code! please complete registration and login');</script>";
-			header('Location: ../index.php');		
+			echo "<script type=\"text/javascript\">window.alert('Valid code! please complete registration and login');window.location.href = 'index.php';</script>";
 		}
 		else{
 			echo "<script type='text/javascript'>alert('Invalid code!');</script>";

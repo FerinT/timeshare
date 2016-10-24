@@ -13,10 +13,10 @@ $isVerifiedUser = $Register->isVerifiedUser($details[0]);
 
 
 if ($isValid === true && $isVerifiedUser === true) {
-    header('Location: DisplayAdverts.php');
+    header('Location: pages/DisplayAdverts.php');
 }  if ($isVerifiedUser == false){
     echo "Please verify your account";
-	 header('Location: webpages/EnterVerificationCode.php');
+	 header('Location: pages/EnterVerificationCode.php');
 }
 else{
 	echo "Invalid username and password combination";

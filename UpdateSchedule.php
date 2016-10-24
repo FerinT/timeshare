@@ -17,8 +17,9 @@ if (session_id() == '') {
     session_start();
 }
 
-if($_SESSION['email'] == ""){
-	echo "<script type=\"text/javascript\">window.alert('You must be a registered user.');window.location.href = 'index.php';</script>";
+if($_SESSION['email'] == "" or !isset($_SESSION['email'])){
+	echo "<script type=\"text/javascript\">window.alert('You must be a registered user.');window.location.href = 'pages/DisplayCart.php';</script>";
+	exit;
 }
 
 
@@ -91,5 +92,5 @@ $setup->mail("TimeShare","Invoice",$_SESSION['email'],$body);
 $Transaction = new Transaction($_SESSION['userID'], date("Y-m-d H:i:s"));
 $TransactionDAOobject->saveTransaction($Transaction, $cart);
 $_SESSION['cartItems'] = "";
-header( 'Location: DisplayAdverts.php' ) ;
+header( 'Location: pages/DisplayAdverts.php' ) ;
 ?>

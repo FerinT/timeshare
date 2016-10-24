@@ -3,11 +3,11 @@
 if(isset($_POST['submit']))
 {
 
-	include_once dirname(__FILE__) . '/../php/src/register/Register.php';
-	include_once dirname(__FILE__) . '/../php/src/user/User.php';
-	include_once dirname(__FILE__) . '/../php/dataaccess/RegisterDAO.php';
+	include_once dirname(__FILE__) . '/php/src/register/Register.php';
+	include_once dirname(__FILE__) . '/php/src/user/User.php';
+	include_once dirname(__FILE__) . '/php/dataaccess/RegisterDAO.php';
 
-	require_once('../MailSetup.php');
+	require_once('MailSetup.php');
 	
 	$UserInfo = $_POST['details'];
 
@@ -52,7 +52,7 @@ if(isset($_POST['submit']))
     $setup->mail("Timeshare", $EmailSubject, $UserObject->getEmailAddress(), $EmailBody);
 
     
-	header( 'Location: EnterVerificationCode.php' ) ;
+	header( 'Location: pages/EnterVerificationCode.php' ) ;
 }
 
 

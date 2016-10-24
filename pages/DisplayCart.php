@@ -1,10 +1,10 @@
 <?php
 
-include dirname(__FILE__) . "/../../../php/src/cart/Item.php";
-include dirname(__FILE__) . "/../../../php/src/cart/Cart.php";
-include dirname(__FILE__) . "/../../../php/src/user/User.php";
-include dirname(__FILE__) . "/../../../php/src/service/Service.php";
-include dirname(__FILE__) . "/../../../pages/header.php";
+include dirname(__FILE__) . "/../php/src/cart/Item.php";
+include dirname(__FILE__) . "/../php/src/cart/Cart.php";
+include dirname(__FILE__) . "/../php/src/user/User.php";
+include dirname(__FILE__) . "/../php/src/service/Service.php";
+include dirname(__FILE__) . "/header.php";
 
 
 if (session_id() == '') {
@@ -58,7 +58,7 @@ else {
 					</td > 
 					<td class='row-text-center' align='center'> <h3 class='row-text-center'><b>R${Price}</b></h3></td >
 					<td class='row-text-center' align='center'> <h3 class='row-text-center'><b>${TimeAndDay}</b></h3></td >
-					<td class='row-text-center' align='center'><input type='button' name='removeItembtn' value='Remove Item' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php?index=${cntItems}'\"/> </td>
+					<td class='row-text-center' align='center'><input type='button' name='removeItembtn' value='Remove Item' onclick=\"window.location.href='DisplayCart.php?index=${cntItems}'\"/> </td>
 				  ";
         $cntItems++;
         $totalCartCost = $totalCartCost + $Price;
@@ -70,7 +70,7 @@ else {
 				  </tr >";
     
     
-    echo "<tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td> <input type='button' type='button' value='checkout' onclick=\"window.location.href='/timeshare/UpdateSchedule.php'\"/> </td></tr>";
+    echo "<tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td> <input type='button' type='button' value='checkout' onclick=\"window.location.href='../UpdateSchedule.php'\"/> </td></tr>";
 
     echo "</table></div></div>
 					<div class='alert alert-info footer'>

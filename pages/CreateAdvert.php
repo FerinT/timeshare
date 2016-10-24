@@ -48,7 +48,7 @@
 				
 				
 				$ServiceDAOobject->insertService($ServiceOject);
-				header( 'Location: ../DisplayAdverts.php' ) ;
+				header( 'Location: DisplayAdverts.php' ) ;
 				// STEPS TO SAVE AN ADVERT 
 				// get the userID
 				// save the schedule and return the scheduleID
@@ -64,7 +64,7 @@
 	
 <html>
 <head>
-	 <script type="text/javascript" src="../javascript/Formvalidation.js" />
+	 <script type="text/javascript" src="../js/Formvalidation.js" />
 	
     </script>   
 </head>
