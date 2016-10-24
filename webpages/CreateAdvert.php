@@ -1,5 +1,12 @@
 <?php
 
+		include_once dirname(__FILE__) . "/../php/src/schedule/ProcessSchedule.php";
+		include_once dirname(__FILE__) . "/../php/src/service/Service.php";
+		include_once dirname(__FILE__) . "/../php/dataaccess/ScheduleDAO.php";
+		include_once dirname(__FILE__) . "/../php/dataaccess/ServiceDAO.php";
+		
+		include_once dirname(__FILE__) . "/../php/src/schedule/CreateCalendar.php";
+		
 		if(session_id() == '') {
 		   session_start();
 		}
@@ -9,14 +16,8 @@
 			echo "<script type=\"text/javascript\">window.alert('You must be a registered user.');window.location.href = '../index.php';</script>";
 		}
 
-		include_once dirname(__FILE__) . "/../php/src/schedule/CreateCalendar.php";
-		
 		if(isset($_POST['submit']))
 		{
-			include_once dirname(__FILE__) . "/../php/src/schedule/ProcessSchedule.php";
-			include_once dirname(__FILE__) . "/../php/src/service/Service.php";
-			include_once dirname(__FILE__) . "/../php/dataaccess/ScheduleDAO.php";
-			include_once dirname(__FILE__) . "/../php/dataaccess/ServiceDAO.php";
 			
 			
 			if (!isset($_POST['my_schedule'])){
@@ -32,9 +33,6 @@
 				$userSchedule = $_POST['my_schedule'];
 				$ProcessScheduleObject = new ProcessSchedule();
 				$arr = $ProcessScheduleObject->processSchedule($userSchedule);
-				
-				
-				echo"save function must still be implemented, when we can access who the user is thats logged in";
 				
 				$UserID  = $_SESSION['userID'];
 				$ScheduleID = $ScheduleDAOobject->insertSchedule($arr);
@@ -66,15 +64,15 @@
 	
 <html>
 <head>
-	 <script type="text/javascript" src="../javascript/Formvalidation.js">
-    </script>
+	 <script type="text/javascript" src="../javascript/Formvalidation.js" />
+	
+    </script>   
 </head>
 
 <body>
 	
 
 	<form name="createAdvertform" action="CreateAdvert.php" method="POST" onsubmit="return isValidCreateAdvert();">
-		
 		<?php
 		// Displays the blank calendar
 	
@@ -98,7 +96,11 @@
 	<p><input type='submit' name='submit' value='submit' /></p>
 </form>
 	
+<div class='alert alert-info footer'>
+	<p>This website is protected by law and is copyrighted to the owners and all those that are involved</p>
+</div>	
+	
 </body>
 
 
-</html>
+</html> 

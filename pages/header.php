@@ -47,7 +47,7 @@ if(session_id() == '') {
 			<ul class='nav navbar-nav'>
             <li><a href='DisplayAdverts.php'>View Adverts</a></li>
             <li><a href='webpages/CreateAdvert.php'>Create Advert</a></li>
-            <li><a href='pages/contact.html'>Contact Us</a></li>
+			<!-- <li><a href='pages/contact.html'>Contact Us</a></li> -->
 		    </ul>".validateLoggin()."
         </div><!--/.navbar-collapse -->
       </div>
@@ -59,9 +59,10 @@ if(session_id() == '') {
 		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='pages/header.php'>
 					<h4 class='inline'>Hi <b>".$_SESSION['username']. "!</b></h4>
 					<button type='button' name='profile' class='btn btn-info glyphicon glyphicon-user spaces-right-header' onclick=\"window.location.href='/timeshare/pages/profile.php'\"'></button>
-					<button type='button' class='btn btn-success glyphicon glyphicon-shopping-cart spaces-right-header' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php'\"></button>
 					<input type='submit' class='btn btn-danger' name='logoutbtn' value='Sign Out!'/>
 			  	</form>
+				<button type='button' class='btn btn-success glyphicon glyphicon-shopping-cart spaces-right-header' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php'\"></button>
+					
 				";  
 	}
 
@@ -69,11 +70,11 @@ if(session_id() == '') {
 		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='Login.php'>
 				Email Address: <input type='text' class='text-color' name='details[0]' value=''/>
 				Password: <input type='password' class='text-color' name='details[1]' value=''/>
-				<input type='submit' class='btn btn-success ' name='submit' value='Sign in'/>
-				<button class='btn btn-info btn-md glyphicon glyphicon-shopping-cart spaces-right' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php'\"></button>
-			  </form>";
+				<input type='submit' class='btn btn-success ' name='submit' value='Sign in'/>	
+			  </form>
+			  <button class='btn btn-info btn-md glyphicon glyphicon-shopping-cart spaces-right' onclick=\"window.location.href='/timeshare/php/src/cart/DisplayCart.php'\"></button>";
 	}
-
+	// that button can't be in the form because then it doesnt go to the next page
 	function logOut() {
 		if(session_id() != '') {
    			session_destroy();

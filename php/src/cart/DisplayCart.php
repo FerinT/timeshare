@@ -18,7 +18,7 @@ if (isset($_GET['index'])) {
 }
 
 
-if (!isset($_SESSION['cartItems']))
+if (!isset($_SESSION['cartItems']) || $_SESSION['cartItems'] == "")
     echo "your cart is empty";
 else {
     $cart = $_SESSION['cartItems'];
@@ -43,7 +43,7 @@ else {
         $SellerImage = $c->getAdvert()->getUser()->getProfilePicture();
         $Description = $c->getAdvert()->getServiceDescription();
         $Price = $c->getAdvert()->getRatePerHour();
-        $TimeAndDay = $c->getDay() . $c->getTime();
+        $TimeAndDay = $c->getDay() . " " . $c->getTime();
         $SellerEmail = $c->getAdvert()->getUser()->getEmailAddress();
 
 

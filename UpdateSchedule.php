@@ -17,6 +17,11 @@ if (session_id() == '') {
     session_start();
 }
 
+if($_SESSION['email'] == ""){
+	echo "<script type=\"text/javascript\">window.alert('You must be a registered user.');window.location.href = 'index.php';</script>";
+}
+
+
 $cart = $_SESSION['cartItems'];
 $ServiceDAOobject = new ServiceDAO();
 $ScheduleDAOobject = new ScheduleDAO();
@@ -85,6 +90,6 @@ $setup->mail("TimeShare","Invoice",$_SESSION['email'],$body);
 // Insert into order line table
 $Transaction = new Transaction($_SESSION['userID'], date("Y-m-d H:i:s"));
 $TransactionDAOobject->saveTransaction($Transaction, $cart);
-session_unset($_SESSION['cartItems']);
+$_SESSION['cartItems'] = "";
 header( 'Location: DisplayAdverts.php' ) ;
 ?>

@@ -20,6 +20,11 @@ if (isset($_POST['submit'])) {
     $ScheduleArray = $_POST['originalSchedule'];
     $SellingSchedule = explode(',', $ScheduleArray);
 
+	if($BuyingSchedule == $SellingSchedule){
+		echo "<script type=\"text/javascript\">window.alert('You did not select any timeslots!');window.location.href = 'AdvertDetails.php';</script>";
+	}
+	
+	
     // returns the indexes of "timeslots" selected by the user
     $arr = $ProcessScheduleObject->compareSchedule($BuyingSchedule, $SellingSchedule);
 

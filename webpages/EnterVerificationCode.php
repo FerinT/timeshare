@@ -1,4 +1,4 @@
-<html>
+
 <?php
 	include dirname(__FILE__).'/../pages/header.php';
 	include dirname(__FILE__).'/../php/dataaccess/RegisterDAO.php';
@@ -21,13 +21,21 @@
 
 
  ?>
-
+<html>
 <body>
-	<form name="verificationCodeForm" action="EnterVerificationCode.php" method="POST">
-		<p>Email Address: <input type='text' name='emailAddress' value=''/></p>
-		<p>Verification code: <input type='number' name='verificationCode' value=''/></p>
-		<p><input type='submit' name='submit' value='submit' /></p>
-	</form>
+	<div id="verificationCodeForm" style="background-color:#2ba7cc;     margin: auto;
+	margin-top: 50px;
+    display:inline-block;
+    width: 50%;
+    display: block;
+	padding: 70px 0;
+    text-align: center;">
+		<form name="verificationCodeForm" action="EnterVerificationCode.php" method="POST">
+			<p class='text-color'>Email Address: <input type='text' name='emailAddress' value=''/></p>
+			<p class='text-color'>Verification code: <input type='number' name='verificationCode' value=''/></p>
+			<p><input type='submit' name='submit' value='submit' /></p>
+		</form>
+		</div>
 </body>
 
 </html>

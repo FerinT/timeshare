@@ -3,11 +3,6 @@
 	margin-right:10px!important;
 }
 
-.altered-container-account 	{
-	margin-left:180px!important;
-	margin-right:180px!important;
-}
-
 .altered-menu 	{
 	margin-left:0px!important;
 	margin-right:0px!important;
@@ -15,9 +10,6 @@
 
 .button-cart 	{
 	margin-left:20px;
-	position:absolute;
-	top:0;
-	right:0;
 }
 
 .middle-buttons 	{
@@ -38,10 +30,6 @@
 
 .spaces-right {
 	margin-right:20px;
-}
-
-.spaces-right -header{
-	margin-right:10px;
 }
 
 .register-button {
@@ -74,13 +62,6 @@
 
 .fonts {
 	font-size:60px;
-	margin-bottom:0px!important;
-	padding-bottom:0px!important;
-	background-color:rgba(238, 238, 238, 0)!important;
-}
-
-.fonts-account {
-	font-size:20px;
 	margin-bottom:0px!important;
 	padding-bottom:0px!important;
 	background-color:rgba(238, 238, 238, 0)!important;
@@ -166,9 +147,7 @@ hr {
 }
 
 .custom-control {
-	border:1px solid rgba(0, 0, 0, 0.55)!important;
-	color:black!important;
-	font-size: large!important;
+	border:1px solid rgba(0, 0, 0, 0.55)!important
 }
 
 .search-field {
