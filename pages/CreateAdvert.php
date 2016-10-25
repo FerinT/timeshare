@@ -13,7 +13,7 @@
 
 		if(!isset($_SESSION['username']) || $_SESSION['username'] == null)
 		{
-			echo "<script type=\"text/javascript\">window.alert('You must be a registered user.');window.location.href = '../index.php';</script>";
+			echo "<script type=\"text/javascript\">window.alert('You must be a registered user.');window.location.href = 'index.php';</script>";
 		}
 
 		if(isset($_POST['submit']))
