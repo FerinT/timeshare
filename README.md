@@ -3,7 +3,7 @@
 How to run this..
 
 1. import the script to populate the database in phpmyadmin \timeshare\php\dataaccess\scripts\timeshare.sql
-2. run the page /timeshare ( This takes you to the homepage)
+2. run the page /timeshare/pages ( This takes you to the homepage)
 
 ## More Info:
 The CreateAdvert.php needs CSS. The user now gets inserted into the verification table and not user table however in RegisterDAO I am unable to add user to user table when they verify. still need to add the line in the login that checks if they're in the verification table <br />
