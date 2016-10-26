@@ -20,11 +20,11 @@ if (isset($_POST['submit'])) {
     $ScheduleArray = $_POST['originalSchedule'];
     $SellingSchedule = explode(',', $ScheduleArray);
 
-	if($BuyingSchedule == $SellingSchedule){
-		echo "<script type=\"text/javascript\">window.alert('You did not select any timeslots!');window.location.href = 'DisplayAdverts.php';</script>";
-	}
-	
-	
+    if ($BuyingSchedule == $SellingSchedule) {
+        echo "<script type=\"text/javascript\">window.alert('You did not select any timeslots!');window.location.href = 'DisplayAdverts.php';</script>";
+    }
+
+
     // returns the indexes of "timeslots" selected by the user
     $arr = $ProcessScheduleObject->compareSchedule($BuyingSchedule, $SellingSchedule);
 
@@ -36,8 +36,8 @@ if (isset($_POST['submit'])) {
 
     include("/../ProcessIndexes.php");
 
-    echo "added to cart successfully";
 
+    header('Location: DisplayAdverts.php');
     exit();
 }
 
@@ -47,7 +47,6 @@ if (isset($_POST['submit'])) {
 <html>
 <body>
 <br>
-<form name="advertDeatilsForm" action="AdvertDetails.php" method="POST">
     <?php
     $Index = $_GET['index'];
     if (session_id() == '') {
@@ -63,22 +62,49 @@ if (isset($_POST['submit'])) {
     $Table->createCalendar($ScheduleArray);
 
     // This deals with passing the original array on form submit
-    // impode it back into a sting so that we can pass it via $_POST
+    // implode it back into a sting so that we can pass it via $_POST
     $Data = implode(',', $ScheduleArray);
     echo '<input type="hidden" name="originalSchedule" value="' . $Data . '" >';
 
     ?>
-    <input type='submit' name='submit' value='Add to cart'/>
-</form>
-<input type='button' name='viewcart' value='viewcart'
-       onclick="window.location.href='DisplayCart.php'"/>
+    <input type='submit' name='submit' value='Add to cart' data-toggle="modal" data-target="#myModal"/>
+
+<input type='button' name='viewcart' value='viewcart'/>
+
 <div class='alert alert-warning text-align-center spaces-bottom'>
     <h3>Rate Per Hour: R<?php echo $ServiceArray[$Index]->getRatePerHour() ?></h3>
 </div>
 <br/><br/><br/><br/>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog middle-buttons panel custom-panel">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"></button>
+                <h4 class="modal-title page-header"><b>Account</b></h4>
+            </div>
+            <div align="center" class="modal-body">
+                <p>Successfully Updated Details!</p>
+            </div>
+            <div class="modal-footer">
+                <form method="post" action="/timeshare/pages/DisplayAdverts.php">
+                    <input type="submit" class="btn btn-default" value="OK"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class='alert alert-info footer'>
     <p>This website is protected by law and is copyrighted to the owners and all those that are involved</p>
 </div>
+
+<script src="/timeshare/js/Formvalidation.js"> </script>
+<script src="/timeshare/js/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/timeshare/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="/timeshare/js/tether.min.js"></script>
+<script src="/timeshare/js/bootstrap.min.js"></script>
+
 </body>
 </html>
 

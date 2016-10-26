@@ -22,16 +22,21 @@
 			AND t.TransactionID = tl.TransactionID
 			AND t.BuyerID = ' .$_SESSION['userID'];
 
+    //echo $_SESSION['username'];
+    //echo $_SESSION['email'];
+    //echo $_SESSION['userID'];
+
 	$SqlHistory = 'SELECT s.serviceID, s.ScheduleID, s.UserID, s.ServiceOffered,  s.ServiceOffered, s.ServiceDescription, s.Category, s.RatePerHour, s.Location, tl.Day, tl.Time
 		  FROM `Service` AS s , `TransactionLine` AS tl, `Transaction` AS t
 		  WHERE s.serviceID = tl.ServiceID
 		  AND t.TransactionID = tl.TransactionID
 		  AND s.UserID = ' . $_SESSION['userID'];
 
-	$SqlProfile = 'SELECT * FROM user;';
+	$SqlProfile = 'SELECT * FROM user
+                  WHERE userid = '.$_SESSION['userID'].';';
 	$ResultProfile = $Connection->query($SqlProfile);
-	$Row = $ResultProfile->fetch_assoc();
 
+    $Row = $ResultProfile->fetch_assoc();
 
 	$ResultPurchase = $Connection->query($SqlPurchase);
 
@@ -113,8 +118,10 @@
 			  	<p>Successfully Updated Details!</p>
 			  </div>
 			  <div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			    <form method="post" action="#">
+			        <input type="submit" class="btn btn-default" value="Submit" onclick=".updateProfile($_SESSION[userID]). " />
+				    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</form>
 			  </div>
 			</div>
 		  </div>
@@ -123,6 +130,17 @@
 		'; 
 
 	include 'footer.php';
+
+
+    function updateProfile($userID) {
+        $SqlHistory = 'INSERT INTO ' . $_SESSION['userID'];
+
+        $SqlProfile = 'SELECT * FROM user
+                  WHERE userid = '.$_SESSION['userID'].';';
+        $ResultProfile = $Connection->query($SqlProfile);
+
+        $Row = $ResultProfile->fetch_assoc();
+    }
 
 	echo '
 	

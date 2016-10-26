@@ -21,7 +21,8 @@ class CreateCalendar
    public function createCalendar($arr)
     {
 		
-		echo '<div class="container spaces-top"><div class="table-responsive">';
+		echo '<div class="container spaces-top">
+              <div class="table-responsive">';
 		
         echo "<table class='table table-bordered'><td class='table-border-color'>";
         echo "</td>";

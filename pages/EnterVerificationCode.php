@@ -11,6 +11,7 @@
 		
 		if($isVerifiedUser == true){
 			echo "<script type=\"text/javascript\">window.alert('Valid code! please complete registration and login');window.location.href = 'index.php';</script>";
+
 		}
 		else{
 			echo "<script type='text/javascript'>alert('Invalid code!');</script>";

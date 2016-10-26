@@ -59,18 +59,25 @@ else {
 					<td class='row-text-center' align='center'> <h3 class='row-text-center'><b>R${Price}</b></h3></td >
 					<td class='row-text-center' align='center'> <h3 class='row-text-center'><b>${TimeAndDay}</b></h3></td >
 					<td class='row-text-center' align='center'><input type='button' name='removeItembtn' value='Remove Item' onclick=\"window.location.href='DisplayCart.php?index=${cntItems}'\"/> </td>
+				  
 				  ";
         $cntItems++;
         $totalCartCost = $totalCartCost + $Price;
     }
-	
-	
+
+
     $_SESSION['totalCartCost'] = $totalCartCost;
-    echo "<td class='row-text-center' align='center'><h3 class='row-text-center'><b>Total cost: R${totalCartCost}</b></h3> </td>
+    echo "<tr><td></td><td></td>
+           <td></td>
+            <td class='row-text-center' align='center'><h3 class='row-text-center'><b>Total cost: R${totalCartCost}</b></h3> 
+           </td>
+        <td>
+          <input type='button' type='button' value='checkout' onclick=\"window.location.href='../UpdateSchedule.php'\"/>
+          </td>
 				  </tr >";
-    
-    
-    echo "<tr> <td></td> <td></td> <td></td> <td></td> <td></td> <td> <input type='button' type='button' value='checkout' onclick=\"window.location.href='../UpdateSchedule.php'\"/> </td></tr>";
+
+
+    //echo "<tr>  <td></td> <td></td> <td></td> <td></td> <td>  </td></tr>";
 
     echo "</table></div></div>
 					<div class='alert alert-info footer'>
