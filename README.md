@@ -1,4 +1,4 @@
-# timeshare
+# Timeshare
 
 How to run this..
 
@@ -9,7 +9,7 @@ How to run this..
  Whenever you make any make changes make sure you do an end to end run through of the whole app. <br/>
  <br />
   
-  ## What still needs to be done..<br />
+## What still needs to be done..<br />
  1. Tool tips <br/>
  2. "Help" linking to external PDF with FAQs <br/>
  3. Asking a user if they are "sure" before purchasing <br/>
