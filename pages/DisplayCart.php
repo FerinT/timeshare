@@ -67,6 +67,8 @@ else {
 
 
     $_SESSION['totalCartCost'] = $totalCartCost;
+
+/*
     echo "<tr><td></td><td></td>
            <td></td>
             <td class='row-text-center' align='center'><h3 class='row-text-center'><b>Total cost: R${totalCartCost}</b></h3> 
@@ -77,9 +79,27 @@ else {
 				  </tr >";
 
 
-    //echo "<tr>  <td></td> <td></td> <td></td> <td></td> <td>  </td></tr>";
+    echo "<tr>  <td></td> <td></td> <td></td> <td></td> <td>  </td></tr>";*/
 
-    echo "</table></div></div>
+    echo "</table>";
+
+
+    echo '<div class="row cart-total table-header-color spaces-bottom">
+                    
+                    <div class="col-md-2"> </div>
+                    <div class="col-md-2"> </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2"></div>
+                  
+                    <div class="col-md-2"><h4><b>Total cost: R'.$_SESSION['totalCartCost'].'</b></h4></div>
+                    <div class="col-md-2"> 
+                    <div align="center"><input type=\'button\'  class="btn btn-md  btn-success spaces-left" value=\'checkout\' onclick="window.location.href=\'../UpdateSchedule.php\'"/></div>
+                    </div>         
+                             
+          </div>
+    ';
+
+    echo "</div></div>
 					<div class='alert alert-info footer'>
 						<p>This website is protected by law and is copyrighted to the owners and all those that are involved</p>
 					</div></body>

@@ -44,6 +44,7 @@ class TransactionDAO
 
         }
 
+        return $transactionID;
     }
 
 

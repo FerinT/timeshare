@@ -64,7 +64,7 @@ foreach ($cart as $item) {
 
     //Setup Invoice Information
     $Invoiceoutput .= "Seller Name: " . $item->getAdvert()->getUser()->getName() . " Advert: " . $item->getAdvert()->getServiceDescription() . " Rate: " . $item->getAdvert()->getRatePerHour() . " Date: " . $datetime . "\n";
-    $HTMLInvoiceOutput .= "Seller Name: " . $item->getAdvert()->getUser()->getName() . " Advert: " . $item->getAdvert()->getServiceDescription() . " Rate: " . $item->getAdvert()->getRatePerHour() . " Date: " . $datetime . "<br/>";
+    $HTMLInvoiceOutput .= $item->getAdvert()->getUser()->getName() . ":" . $item->getAdvert()->getServiceDescription() . ":" . $item->getAdvert()->getRatePerHour() .":" . $datetime.":";
 }
 
 //Send Transaction Emails to Sellers
@@ -86,18 +86,19 @@ foreach ($a as $key => $value) {
 
 }
 $Invoiceoutput .= "\n\nTotal Cost = " . $_SESSION['totalCartCost'];
-$HTMLInvoiceOutput .= "<br/><br/>Total Cost = " . $_SESSION['totalCartCost'];
+//$HTMLInvoiceOutput .= "<br/><br/>Total Cost = " . $_SESSION['totalCartCost'];
 //Send Invoice to logged in user
-$body = "INVOICE \n" . $Invoiceoutput;
-$HTMLBody = "INVOICE <br/>" . $Invoiceoutput;
-$_SESSION['invoiceDetails'] = $HTMLBody;
 
-//$setup->mail("TimeShare", "Invoice", $_SESSION['email'], $body);
 
 
 // Insert into order line table
 $Transaction = new Transaction($_SESSION['userID'], date("Y-m-d H:i:s"));
-$TransactionDAOobject->saveTransaction($Transaction, $cart);
+$_SESSION['orderID'] = $TransactionDAOobject->saveTransaction($Transaction, $cart);
+$body = "INVOICE \n" ."Order#: ".$_SESSION['orderID']."\n" .$Invoiceoutput;
+$HTMLBody =  $HTMLInvoiceOutput;
+$_SESSION['invoiceDetails'] = $HTMLBody;
+
+//$setup->mail("TimeShare", "Invoice", $_SESSION['email'], $body);
 $_SESSION['cartItems'] = "";
 header('Location: pages/Invoice.php');
 ?>
