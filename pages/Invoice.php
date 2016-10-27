@@ -38,8 +38,8 @@ echo "";
 echo "
 <div class='table-responsive container-fluid altered-invoice-container spaces-top' >
                     <div align='right'><h1 class='page-header'>Invoice</h1></div>
-                    <div align='right'><b>Date: ".$date."</b></div>
-                    <div align='right'><b>Order#: ".$_SESSION['orderID']."</b></div>
+                    <div align='right'><b>Date: " . $date . "</b></div>
+                    <div align='right'><b>Order#: " . $_SESSION['orderID'] . "</b></div>
 					<table class=\"table table-bordered table-header-invoice-color\" >
 					<tr style='background:#b7b3b3'>
 						<th >Seller Name</th >
@@ -50,7 +50,7 @@ echo "
 					
 ";
 
-for ($i = 0; $i < count($invoiceArray)-1; $i++) {
+for ($i = 0; $i < count($invoiceArray) - 1; $i++) {
     if ($i % 4 == 0) {
         echo '<tr>
 						<td >' . $invoiceArray[$i] . '</td >
@@ -73,7 +73,7 @@ echo '<div class="row cart-total-invoice table-header-invoice-color spaces-botto
                      <div class="col-md-2"> 
                     </div>    
                     <div class="col-md-2">
-                        <h4><b>Total cost: R'.$_SESSION['totalCartCost'].'</b></h4></div>
+                        <h4><b>Total cost: R' . $_SESSION['totalCartCost'] . '</b></h4></div>
                          
                              
           </div>

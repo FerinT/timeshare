@@ -59,9 +59,10 @@ if(session_id() == '') {
 		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='header.php'>
 					<h4 class='inline'>Hi <b>".$_SESSION['username']. "!</b></h4>
 					<button type='button' name='profile' class='btn btn-info glyphicon glyphicon-user spaces-right-header' onclick=\"window.location.href='/timeshare/pages/profile.php'\"'></button>
+					<button type='button' class='btn btn-success glyphicon glyphicon-shopping-cart spaces-right-header' onclick=\"window.location.href='DisplayCart.php'\"></button>
 					<input type='submit' class='btn btn-danger' name='logoutbtn' value='Sign Out!'/>
 			  	</form>
-				<button type='button' class='btn btn-success glyphicon glyphicon-shopping-cart spaces-right-header' onclick=\"window.location.href='DisplayCart.php'\"></button>
+				
 					
 				";  
 	}
@@ -70,9 +71,10 @@ if(session_id() == '') {
 		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='../Login.php'>
 				Email Address: <input type='text' class='text-color' name='details[0]' value=''/>
 				Password: <input type='password' class='text-color' name='details[1]' value=''/>
-				<input type='submit' class='btn btn-success ' name='submit' value='Sign in'/>	
+				<input type='submit' class='btn btn-success ' name='submit' value='Sign in'/>
+				 <button type='button' name='btn-worse' class='btn btn-info btn-md glyphicon glyphicon-shopping-cart spaces-left' onclick=\"window.location.href='DisplayCart.php'\"></button>
 			  </form>
-			  <button class='btn btn-info btn-md glyphicon glyphicon-shopping-cart spaces-right' onclick=\"window.location.href='DisplayCart.php'\"></button>";
+			  ";
 	}
 	// that button can't be in the form because then it doesnt go to the next page
 	function logOut() {

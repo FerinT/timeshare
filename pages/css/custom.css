@@ -29,8 +29,9 @@
 }
 
 .spaces-right {
-	margin-right:20px;
+	margin-right:20px!important;
 }
+
 
 .register-button {
 	width:100%;
@@ -188,4 +189,13 @@ a  {
 .altered-invoice-container 	{
 	margin-left:200px!important;
 	margin-right:200px!important;
+}
+
+.regVerification {
+	background-color:#d9edf7!important;
+	width: 30%;
+}
+
+.spaces-top-verification {
+	margin-top:80px!important;
 }
