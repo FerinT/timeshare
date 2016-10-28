@@ -75,8 +75,9 @@ echo '<div class="row cart-total-invoice table-header-invoice-color spaces-botto
                     <div class="col-md-2">
                         <h4><b>Total cost: R' . $_SESSION['totalCartCost'] . '</b></h4></div>
                          
-                             
+                            
           </div>
+          <div class="alert alert-info"> A copy of this invoice has been ent to your personal email address.</div>
           </div>
     ';
 
