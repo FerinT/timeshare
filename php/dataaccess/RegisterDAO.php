@@ -25,12 +25,13 @@ class RegisterDAO
         $name = $UserObject->getName();
         $password = $UserObject->getPassword();
         $verificationCode = $RegisterObject->getVerificationCode();
-
-
-        $sql = "INSERT INTO Registration (emailaddress, name, password, code, profilepicture) VALUES ('$email','$name','$password', '$verificationCode', '$contents')";
-
-        $this->Connection->query($sql);
-
+		
+		$sqlUser = "INSERT INTO USER (emailaddress, name, password, profilepicture) VALUES ('$email','$name','$password','$contents')";
+		$this->Connection->query($sqlUser);
+        
+		$sql = "INSERT INTO Registration (emailaddress, name, password, code, profilepicture) VALUES ('$email','$name','$password', '$verificationCode', '$contents')";
+		$this->Connection->query($sql);
+		
         $id = $this->Connection->insert_id;
         return $id;
     }

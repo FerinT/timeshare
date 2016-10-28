@@ -68,7 +68,7 @@ class ServiceTableGenerator
 
         foreach ($ServiceArray as $Service1) {
 
-            $serviceDescription = strtolower($Service1->getServiceDescription());
+            $serviceDescription = strtolower($Service1->getServiceOffered());
 
             $search = '';
 
@@ -77,16 +77,18 @@ class ServiceTableGenerator
             }
 
             if (empty($search)) {
-                $search = 'a';
-            } else {
-                $search = strtolower($_POST['search']);
-            }
-
-            if (strpos($serviceDescription, $search) !== false) {
                 $this->renderPage($Service1, $ArrayIndex);
                 $isServiceFound = true;
                 $ArrayIndex += 1;
-            }
+            } else {
+                $search = strtolower($_POST['search']);
+			
+				if (strpos($serviceDescription, $search) !== false) {
+					$this->renderPage($Service1, $ArrayIndex);
+					$isServiceFound = true;
+					$ArrayIndex += 1;
+				}
+			}
         }
 
         if (!$isServiceFound) {
@@ -128,15 +130,7 @@ $(document).ready(function(){
         }
 
 
-        echo "</table ></div></div>
-				<div class='alert alert-info footer'>
-					<p>This website is protected by law and is copyrighted to the owners and all those that are involved</p>
-				</div>
-				<script src=\"../js/Formvalidation.js\"> </script>
-                <script>window.jQuery || document.write('<script src=\"../js/vendor/jquery.min.js\"><\/script>')</script>
-	            <script src=\"../js/bootstrap.min.js\"></script>		
-			</body>
-			</html>";
+        echo "</table ></div></div>";
 
         $_SESSION['ServiceArray'] = $ServiceArray;
        unset($_POST['search']);

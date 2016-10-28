@@ -4,6 +4,14 @@ if(session_id() == '') {
     session_start();
 }
 
+	$value = '';
+	
+	if (!isset($_SESSION['cartItems']) || $_SESSION['cartItems'] == ""){	
+		$value = 'empty';
+	}
+	
+	echo $value;
+
 	function validateLoggin() {
 		
 		if(isset($_POST['logoutbtn']))
@@ -24,7 +32,7 @@ if(session_id() == '') {
 		else
 			return notLogged();
 	}
-
+	
 	echo "
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
     <!--<meta name='keywords' content='Video downloader, download youtube, video download, youtube video, youtube downloader, download youtube FLV, download youtube MP4, download youtube 3GP, php video downloader' />-->
@@ -52,14 +60,21 @@ if(session_id() == '') {
         </div><!--/.navbar-collapse -->
       </div>
     </nav>";
-
-
-
+					  
 	function loggedIn() {
+		
+		global $value;
+		
+		$cart = "window.location.href='DisplayCart.php'";
+		
+		if($value == "empty") {
+			$cart = "empty_cart()";
+		}
+		
 		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='header.php'>
 					<h4 class='inline'>Hi <b>".$_SESSION['username']. "!</b></h4>
 					<button type='button' name='profile' class='btn btn-info glyphicon glyphicon-user spaces-right-header' onclick=\"window.location.href='/timeshare/pages/profile.php'\"'></button>
-					<button type='button' class='btn btn-success glyphicon glyphicon-shopping-cart spaces-right-header' onclick=\"window.location.href='DisplayCart.php'\"></button>
+					<button type='button' class='btn btn-success glyphicon glyphicon-shopping-cart spaces-right-header' onclick=\"".$cart."\"></button>
 					<input type='submit' class='btn btn-danger' name='logoutbtn' value='Sign Out!'/>
 			  	</form>
 				
@@ -68,11 +83,20 @@ if(session_id() == '') {
 	}
 
 	function notLogged() {
+		
+		global $value;
+		
+		$cart = "window.location.href='DisplayCart.php'";
+		
+		if($value == "empty") {
+			$cart = "empty_cart()";
+		}
+		
 		return "<form name='myForm' class='navbar-form navbar-right' method='POST' action='../Login.php'>
 				Email Address: <input type='text' class='text-color' name='details[0]' value=''/>
 				Password: <input type='password' class='text-color' name='details[1]' value=''/>
 				<input type='submit' class='btn btn-success ' name='submit' value='Sign in'/>
-				 <button type='button' name='btn-worse' class='btn btn-info btn-md glyphicon glyphicon-shopping-cart spaces-left' onclick=\"window.location.href='DisplayCart.php'\"></button>
+				 <button type='button' name='btn-worse' class='btn btn-info btn-md glyphicon glyphicon-shopping-cart spaces-left' onclick=\"".$cart."\"></button>
 			  </form>
 			  ";
 	}
@@ -84,4 +108,5 @@ if(session_id() == '') {
 		
 		return notLogged();
 	}
+	
 ?>

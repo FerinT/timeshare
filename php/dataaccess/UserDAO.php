@@ -1,11 +1,5 @@
 <?php
 
-/**
- *
- *
- *
- */
-
 if (session_id() == '') {
     session_start();
 }
@@ -28,8 +22,10 @@ class UserDAO
         $name = $UserObject->getName();
         $password = $UserObject->getPassword();
 
-        $sql = "INSERT INTO USER (emailaddress, name, password) VALUES ('${email}','${name}','${password}');";
-
+		//echo $contents;
+	
+		 $sql = "INSERT INTO USER (emailaddress, name, password, profilepicture) VALUES ('$email','$name','$password','$contents')";
+		
         $this->Connection->query($sql);
 
         $id = $this->Connection->insert_id;

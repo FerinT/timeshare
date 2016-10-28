@@ -18,8 +18,9 @@ if (isset($_GET['index'])) {
 }
 
 
-if (!isset($_SESSION['cartItems']) || $_SESSION['cartItems'] == "")
-    echo "your cart is empty";
+if (!isset($_SESSION['cartItems']) || $_SESSION['cartItems'] == ""){
+
+}
 else {
     $cart = $_SESSION['cartItems'];
 
@@ -96,13 +97,13 @@ else {
                     <div align="center"><input type=\'button\'  class="btn btn-md  btn-success spaces-left" value=\'checkout\' onclick="window.location.href=\'../UpdateSchedule.php\'"/></div>
                     </div>         
                              
-          </div>
+          </div></div></div><div style="margin-top:100px"></div>
     ';
-
-    echo "</div></div>
-					<div class='alert alert-info footer'>
-						<p>This website is protected by law and is copyrighted to the owners and all those that are involved</p>
-					</div></body>
-				</html>";
+	
+	
+	include dirname(__FILE__) . "/footer.php";
+    
 }
+
+
 ?>

@@ -10,11 +10,8 @@ How to run this..
  <br />
   
 ## What still needs to be done..<br />
-1. Pop up box to alert if cart is empty instead of current echo;
-2. Advert search should be on "serviceOffered" instead of Service description. (Related to our musician not being found issue)
-3. Upload Picture code in updatre profile needs to be implemented
-4. Add to cart button should be styled and moved
-5. The Readme/install guide must be produced. PS easy enough for mom and dad to install.
+1. Upload Picture code in updatre profile needs to be implemented
+2. The Readme/install guide must be produced. PS easy enough for mom and dad to install.
 
 ## Email Help
  1. Clone swiftmailer at https://github.com/swiftmailer/swiftmailer.git and replace the empty swiftmailer file in our project

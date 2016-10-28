@@ -38,7 +38,9 @@ echo'<html>
     $Schedule = $ServiceArray[$Index]->getSchedule();
     $ScheduleArray = explode(',', $Schedule->getScheduleArray());
     $Table = new CreateCalendar();
+	
     $Table->createCalendar($ScheduleArray);
+	echo '<div align="right" class="container spaces-bottom"><input type="button" class="btn btn-info" name="button" value="Add To Cart" data-toggle="modal" data-target="#myModal"/></div>';
 
     // This deals with passing the original array on form submit
     // implode it back into a sting so that we can pass it via $_POST
@@ -47,9 +49,7 @@ echo'<html>
 
 
 
-   echo' <input type="button" name="button" value="Add to cart" data-toggle="modal" data-target="#myModal"/>
-
-    <div class="alert alert-warning text-align-center spaces-bottom">
+   echo'<div class="alert alert-warning text-align-center spaces-bottom">
         <h3>Rate Per Hour: R';
 
     echo $ServiceArray[$Index]->getRatePerHour();
@@ -115,8 +115,5 @@ function addToCart(){
     $_SESSION['indexes'] = $arr;
 
     include("/../ProcessIndexes.php");
-
 }
-
-
 ?>

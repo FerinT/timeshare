@@ -62,7 +62,7 @@
 }
 
 .image {
-	background-image:url("../images/wf..png");
+	background-image:url("/timeshare/images/wf..png");
 	background-repeat:no-repeat;
 	background-size:100% 500px;
 	padding-bottom:150px;
@@ -187,4 +187,8 @@ a  {
 
 .text-color {
 	color:black;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+	background-color: #5bc0de!important;
 }

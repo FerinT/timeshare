@@ -10,4 +10,6 @@ $ServiceTable = new ServiceTableGenerator;
 $ServiceArray = $Service->selectAllServices();
 $ServiceTable->generateTable1($ServiceArray);
 
+    include dirname(__FILE__) . "/footer.php";
+
 ?>

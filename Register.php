@@ -30,7 +30,7 @@ if(isset($_POST['submit']))
 	$UserObject = new User();
 	$UserObject->setName($UserInfo[0]);
 	$UserObject->setEmailAddress($UserInfo[1]);
-	$UserObject->setProfilePicture($contents);
+	$UserObject->setProfilePicture($_FILES['image']['name']);
 	$UserObject->setPassword($UserInfo[3]);
 	
 	$RegisterDAO = new RegisterDAO;

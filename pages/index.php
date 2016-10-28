@@ -6,6 +6,8 @@
 	
 	<?php include dirname(__FILE__).'/header.php' ?>
 	
+	
+	
 	<div class="image">
 		<div class="row rows-position">
 			<div class="col-md-1">
@@ -22,7 +24,7 @@
 							<p>Email Address: <input type='text' name='details[1]' class="form-control custom-control" value="<?php if(isset($_POST['submit'])){ $details = $_POST['details']; echo $details[1]; }?>"/> </p>		
 							<p>Password: <input type='password' class="form-control custom-control" name='details[2]' value=""/> </p>
 							<p>Confirm Password: <input type='password' class="form-control custom-control" name='details[3]' value=""/> </p>
-							<!--<p>Profile picture: <input type='file' class="form-control" name='image' accept="image/jpeg" value="" /> </p>-->
+							<p>Profile picture: <input type='file' class="form-control" name='image' accept="image/jpeg" value="" /> </p>
 							<p><input type='submit' name='submit' class="btn btn-info btn-lg register-button" value='Register'/>
 						</form>			
 					</div>
@@ -44,35 +46,26 @@
 	
 	<hr />
 
-	<!--<div class="container">
+	<div class="container">
 		<div class="row">
 		<div class="col-md-4 row-border">
 			<div align="center">
 				<h1 class="glyphicon glyphicon-book fonts"></h1>
-				<h3>Tutors</h3>
-				<p>Hundreds of professional tutors at your service...
-				<br />Find all sorts of tutors that you need at your time and expense...</p>
 			</div>
 		</div>
 		<div class="col-md-4 row-border">
 			<div align="center">
 				<h1 class="glyphicon glyphicon-usd fonts"></h1>
-				<h3>Pricing</h3>
-				<p>With our prices you wouldn't need to go anywhere else...
-				<br />No need to pay for lessons you don't need, only pay for them when you need them...</p>
 			</div>
 		</div>
 			<div class="col-md-4 row-border">
 				<div align="center">
 					<h1 class="glyphicon glyphicon-lock fonts"></h1>
-					<h3>Payments</h3> 
-					<p>Now with our new service of payment, things just got a lot easier...
-					<br />From debit cards to credit cards, we allow PayPal and EFT...</p>
 				</div>
 			</div>
 		</div>
 	</div>
-	-->
+	
 	<hr />
 	
 	<div class="jumbotron custom-jumboton">
