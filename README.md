@@ -11,6 +11,7 @@ How to run this..
   
 ## What still needs to be done..<br />
 1. The Readme/install guide must be produced. PS easy enough for mom and dad to install.
+2. Advert needs to be deleted when all the timeslots are taken
 
 ## Email Help
  1. Clone swiftmailer at https://github.com/swiftmailer/swiftmailer.git and replace the empty swiftmailer file in our project
