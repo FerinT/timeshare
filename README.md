@@ -12,6 +12,7 @@ How to run this..
 ## What still needs to be done..<br />
 1. Upload Picture code in updatre profile needs to be implemented
 2. The Readme/install guide must be produced. PS easy enough for mom and dad to install.
+3. Edit the data being populated in the User And Register tables to have different email addresses
 
 ## Email Help
  1. Clone swiftmailer at https://github.com/swiftmailer/swiftmailer.git and replace the empty swiftmailer file in our project
