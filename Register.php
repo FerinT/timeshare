@@ -7,7 +7,7 @@ if(isset($_POST['submit']))
 	include_once dirname(__FILE__) . '/php/src/user/User.php';
 	include_once dirname(__FILE__) . '/php/dataaccess/RegisterDAO.php';
 
-//	require_once('MailSetup.php');
+	//require_once('MailSetup.php');
 	
 	$UserInfo = $_POST['details'];
 
@@ -30,7 +30,7 @@ if(isset($_POST['submit']))
 	$UserObject = new User();
 	$UserObject->setName($UserInfo[0]);
 	$UserObject->setEmailAddress($UserInfo[1]);
-	$UserObject->setProfilePicture($_FILES['image']['name']);
+	$UserObject->setProfilePicture($contents);
 	$UserObject->setPassword($UserInfo[3]);
 	
 	$RegisterDAO = new RegisterDAO;

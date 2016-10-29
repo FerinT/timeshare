@@ -27,10 +27,6 @@ $SqlPurchase = 'SELECT s.serviceID, s.ScheduleID, s.UserID, s.ServiceOffered, s.
 			AND t.TransactionID = tl.TransactionID
 			AND t.BuyerID = ' . $_SESSION['userID'];
 
-//echo $_SESSION['username'];
-//echo $_SESSION['email'];
-//echo $_SESSION['userID'];
-
 $SqlHistory = 'SELECT s.serviceID, s.ScheduleID, s.UserID, s.ServiceOffered,  s.ServiceOffered, s.ServiceDescription, s.Category, s.RatePerHour, s.Location, tl.Day, tl.Time
 		  FROM `Service` AS s , `TransactionLine` AS tl, `Transaction` AS t
 		  WHERE s.serviceID = tl.ServiceID
@@ -54,7 +50,7 @@ echo '
 			<div class="row">
 				<div class="col-md-4">
 					<div class="panel panel-primary">
-						<form name="updateUserForm" action="#" method="POST">
+						<form name="updateUserForm" action="profile.php" enctype="multipart/form-data" method="POST">
 							<div align="center" class="panel-heading"><h4>View/Update Profile</h4></div>
 							<div align="center"><img src="data:image/jpeg;base64,' . base64_encode($Row['profilepicture']) . '" class="img-thumbnail" alt="Profile Pic" width="304" height="236"></div><div>
 							<div align="center">Change Profile Picture</div>
@@ -147,7 +143,19 @@ function updateProfile()
     $Connection = new mysqli("localhost", "root", "", "TIMESHARE");
 
     if ($_POST['newPW'] == "false") {
-        $SqlProfile = "UPDATE `user` SET `name`='" . $_POST['currentusername'] . "' WHERE `userid` = " . $_SESSION['userID'] . ";";
+		if($_FILES['image']['name'] != ""){
+			// copies the uploaded image to a temp location
+			move_uploaded_file($_FILES['image']['tmp_name'], "uploads/" . $_FILES['image']['name'] );
+
+			// Gets the contents of the image
+			$contents = addslashes(file_get_contents("uploads/". $_FILES['image']['name']));
+
+			// Deletes the image after it is copied to an array
+			unlink("uploads/". $_FILES['image']['name']);
+				
+			$SqlProfile = "UPDATE `user` SET `profilepicture` ='" . $contents . "' ,`name` ='" . $_POST['currentusername'] . "' WHERE `userid` = " . $_SESSION['userID'] . ";";
+		} else
+			$SqlProfile = "UPDATE `user` SET `name`='" . $_POST['currentusername'] . "' WHERE `userid` = " . $_SESSION['userID'] . ";";
     } else {
         $SqlProfile = "UPDATE `user` SET `name`='" . $_POST['currentusername'] . "',`password`= '" . $_POST['newPW'] . "' WHERE `userid` = " . $_SESSION['userID'] . ";";
     }

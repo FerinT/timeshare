@@ -21,10 +21,8 @@ class UserDAO
         $email = $UserObject->getEmailAddress();
         $name = $UserObject->getName();
         $password = $UserObject->getPassword();
-
-		//echo $contents;
 	
-		 $sql = "INSERT INTO USER (emailaddress, name, password, profilepicture) VALUES ('$email','$name','$password','$contents')";
+		$sql = "INSERT INTO USER (emailaddress, name, password, profilepicture) VALUES ('$email','$name','$password','$contents')";
 		
         $this->Connection->query($sql);
 

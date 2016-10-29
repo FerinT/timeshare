@@ -65,19 +65,9 @@ class RegisterDAO
             $id = $Row['id'];
 
             // insert into user table
-            //mysqli_close($this->Connection);
-            $Userdao = new UserDAO;
-            $Userdao->insertUser($UserObject);
+            //$Userdao = new UserDAO;
+            //$Userdao->insertUser($UserObject);
 
-
-          /*  if (!mysqli_query($this->Connection,"INSERT INTO USER (emailaddress, name, password) VALUES ('$email','$name','$password')"))
-            {
-                echo("Error description: " . mysqli_error($this->Connection));
-            }*/
-
-
-
-            //$Result = $this->Connection->query($sql);
             // delete record
             $SqlDelete = "DELETE FROM Registration WHERE id = $id";
             $Result = $this->Connection->query($SqlDelete);
