@@ -38,7 +38,7 @@ class ServiceDAO
     public function selectServiceById($Pk)
     {
 		$Sql = "SELECT * FROM Service AS ser INNER JOIN user u ON ser.UserID = u.userid INNER JOIN Schedule sch ON ser.ScheduleID = sch.ScheduleID WHERE ser.ServiceID = $Pk";
-        //$Sql = "SELECT * FROM Service WHERE ServiceID = $Pk;";
+  
         $Result = $this->Connection->query($Sql);
 
         //$Row = $Result->fetch_assoc();
@@ -120,7 +120,13 @@ class ServiceDAO
                 $ScheduleObject->setScheduleArray($Row['ScheduleArray']);
                 $ServiceFound->setSchedule($ScheduleObject);
 
-                array_push($ServiceArray, $ServiceFound); 
+				// if the advert still has avaliable timeslots
+				$ScheduleArray = explode(',', $ScheduleObject->getScheduleArray());
+				$arr = array_fill(0, 84, 0);
+				
+				if($ScheduleArray != $arr){
+					array_push($ServiceArray, $ServiceFound);
+				}					
 
             }
         
@@ -184,7 +190,6 @@ class ServiceDAO
     function selectServicesByCategory($Category)
     {
 		$Sql = "SELECT * FROM Service AS ser INNER JOIN user u ON ser.UserID = u.userid INNER JOIN Schedule sch ON ser.ScheduleID = sch.ScheduleID WHERE Category LIKE '%$Category%'";
-        //$Sql = "SELECT * FROM Service WHERE Category LIKE '%$Category%';";
         $Result = $this->Connection->query($Sql);
 
         //$Row = $Result->fetch_assoc();
@@ -217,9 +222,13 @@ class ServiceDAO
                 $ScheduleObject->setScheduleArray($Row['ScheduleArray']);
                 $ServiceFound->setSchedule($ScheduleObject);
 
-                array_push($ServiceArray, $ServiceFound);
-
-
+				// if the advert still has avaliable timeslots
+				$ScheduleArray = explode(',', $ScheduleObject->getScheduleArray());
+				$arr = array_fill(0, 84, 0);
+				
+				if($ScheduleArray != $arr){
+					array_push($ServiceArray, $ServiceFound);
+				}	
             }
            return $ServiceArray;
         }

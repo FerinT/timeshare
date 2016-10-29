@@ -28,9 +28,11 @@ echo'<html>
 <form name="advertDeatilsForm" action="AdvertDetails.php" method="POST"> ';
 
     $Index = $_GET['index'];
+
     if (session_id() == '') {
         session_start();
     }
+
     $ServiceArray = $_SESSION['ServiceArray'];
     $_SESSION['advertObject'] = $ServiceArray[$Index];
 

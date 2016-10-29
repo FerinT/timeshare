@@ -17,13 +17,14 @@ class ProcessSchedule
         $isTaken = false;
 
         for ($x = 0; $x < 84; $x++) {
+			if($data){
             foreach ($data as $d) {
                 if ((string)$x === $d) {
                     $Schedule[$x] = 1;
                     $isTaken = true;
                 }
             }
-
+			}
             if ($isTaken == false) {
                 $Schedule[$x] = 0;
             }
