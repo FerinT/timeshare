@@ -7,6 +7,8 @@ How to run this..
 
 ## More Info: <br />
  Whenever you make any make changes make sure you do an end to end run through of the whole app. <br/>
+# MAJOR ISSUE<br />
+ Adverts do not get deleted when there are no more time slots avaliable, this causes a lot of extra infor in our DB, I created a work around for now where adverts without timeslots simply don't get displayed. Reason for the work around and not simply deleting the advert is that /timeshare/pages/profile.php relies on tables associated with an advert to display the history. The best thing would be for the profile history to be generated only from order line and transaction. <br/> <br/>
  <br />
   
 ## What still needs to be done..<br />
