@@ -10,7 +10,7 @@ include_once dirname(__FILE__) . "/php/dataaccess/ScheduleDAO.php";
 include_once dirname(__FILE__) . "/php/dataaccess/TransactionDAO.php";
 include_once dirname(__FILE__) . "/php/src/transaction/Transaction.php";
 
-//require_once('MailSetup.php');
+require_once('MailSetup.php');
 
 
 if (session_id() == '') {
@@ -27,7 +27,8 @@ $cart = $_SESSION['cartItems'];
 $ServiceDAOobject = new ServiceDAO();
 $ScheduleDAOobject = new ScheduleDAO();
 $TransactionDAOobject = new TransactionDAO();
-//$setup = new MailSetup();
+$setup = new MailSetup();
+
 $Invoiceoutput = "";
 $HTMLInvoiceOutput = "";
 $a = array();
@@ -82,7 +83,7 @@ foreach ($a as $key => $value) {
     $EmailFooter = "\n\n Please contact me via email " . $_SESSION['email'];
 
     $EmailBody .= $EmailFooter;
-    //$setup->mail($_SESSION['username'], $EmailSubject, $key, $EmailBody);
+    $setup->mail($_SESSION['username'], $EmailSubject, $key, $EmailBody);
 
 }
 $Invoiceoutput .= "\n\nTotal Cost = " . $_SESSION['totalCartCost'];
@@ -98,7 +99,7 @@ $body = "INVOICE \n" ."Order#: ".$_SESSION['orderID']."\n" .$Invoiceoutput;
 $HTMLBody =  $HTMLInvoiceOutput;
 $_SESSION['invoiceDetails'] = $HTMLBody;
 
-//$setup->mail("TimeShare", "Invoice", $_SESSION['email'], $body);
+$setup->mail("TimeShare", "Invoice", $_SESSION['email'], $body);
 $_SESSION['cartItems'] = "";
 header('Location: pages/Invoice.php');
 ?>

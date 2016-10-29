@@ -7,7 +7,7 @@ if(isset($_POST['submit']))
 	include_once dirname(__FILE__) . '/php/src/user/User.php';
 	include_once dirname(__FILE__) . '/php/dataaccess/RegisterDAO.php';
 
-	//require_once('MailSetup.php');
+	require_once('MailSetup.php');
 	
 	$UserInfo = $_POST['details'];
 
@@ -42,14 +42,14 @@ if(isset($_POST['submit']))
 	
 	$RegisterDAO->insertRegister($Register);
 
-	//$setup = new MailSetup();
+	$setup = new MailSetup();
 	$EmailSubject = "Verification Code";
     $EmailIntro = "Please complete registration by entering in the following code: \n". $RandomCode;
     $EmailBody = $EmailIntro;
 	$EmailFooter = "\n\n Please delete this when completed";
 
     $EmailBody .= $EmailFooter;
-   // $setup->mail("Timeshare", $EmailSubject, $UserObject->getEmailAddress(), $EmailBody);
+    $setup->mail("Timeshare", $EmailSubject, $UserObject->getEmailAddress(), $EmailBody);
 
     
 	header( 'Location: pages/EnterVerificationCode.php' ) ;
