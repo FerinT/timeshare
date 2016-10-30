@@ -83,10 +83,10 @@
                                 <option value="business">Business</option>
                                 <option value="other">Other</option>
                                 </select> </p>
-                                <p>Price per hour :R <input type='number' class="form-control custom-control" name='pricePerHour' value=''/></p>
+                                <p>Price per hour :R <input type='number' class="form-control custom-control" name='pricePerHour' value='<?php if(isset($_POST['pricePerHour'])) echo $_POST['pricePerHour']; ?>'/></p>
                                 <p>Location: <input type='text' class="form-control custom-control" name='location' value=''/></p>
-                                <p>Type of service offered: ( ie Math tutor, DJ) <input type='text' class="form-control custom-control" name='typeOfService' value=''/> </p>
-                                <p>Short description<textarea name="shortDescription" class="form-control custom-control" cols="25" rows="5"> </textarea></p>
+                                <p>Type of service offered: ( ie Math tutor, DJ) <input type='text' class="form-control custom-control" name='typeOfService' value='<?php if(isset($_POST['typeOfService'])) echo $_POST['typeOfService']; ?>'/> </p>
+                                <p>Short description<textarea name="shortDescription" class="form-control custom-control" cols="25" rows="5" value='<?php if(isset($_POST['shortDescription'])) echo $_POST['shortDescription']; ?>'> </textarea></p>
                                 <p><input type='submit' class="btn btn-warning btn-md" name='submit' value='submit' /></p>
                             </div>
                     </div>
