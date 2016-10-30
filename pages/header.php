@@ -10,7 +10,7 @@ if(session_id() == '') {
 		$value = 'empty';
 	}
 	
-	echo $value;
+	//echo $value;
 
 	function validateLoggin() {
 		
